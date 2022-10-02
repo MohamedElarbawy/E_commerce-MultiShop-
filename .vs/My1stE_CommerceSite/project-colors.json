@@ -1,0 +1,26 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "5761cc2e-7963-413b-9a52-48073310078c": {
+      "ProjectGuid": "5761cc2e-7963-413b-9a52-48073310078c",
+      "DisplayName": "CoreLayer",
+      "ColorIndex": 0
+    },
+    "65265fbf-2539-4493-9c7d-b6b5109f55b7": {
+      "ProjectGuid": "65265fbf-2539-4493-9c7d-b6b5109f55b7",
+      "DisplayName": "BusinessLogicLayer",
+      "ColorIndex": 1
+    },
+    "b777618e-88ea-4afa-8cbb-240cb4490224": {
+      "ProjectGuid": "b777618e-88ea-4afa-8cbb-240cb4490224",
+      "DisplayName": "MVC_Layer",
+      "ColorIndex": 2
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    }
+  },
+  "NextColorIndex": 3
+}
