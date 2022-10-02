@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLogicLayer
 {
-    public class GenericRepository<T> : IGenricRepository<T> where T : class
+    public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
         private readonly MultiShopContext _context;
 
@@ -28,6 +28,7 @@ namespace BusinessLogicLayer
         public T Add(T entity)
         {
             _context.Set<T>().Add(entity);
+
             return entity;
 
         }

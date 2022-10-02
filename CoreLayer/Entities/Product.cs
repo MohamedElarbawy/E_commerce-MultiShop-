@@ -24,7 +24,9 @@ namespace CoreLayer.Entities
         public string? productSize { get; set; }
         public int? ProductColorId { get; set; }
         public int? ProductCaregoryId { get; set; }
-        [StringLength(200)]
+        [NotMapped]
+        public IFormFile ImgUrl { get; set; }
+
         public string?  ImgName { get; set; }
         public bool IsActive { get; set; }
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CoreLayer
 {
-    public interface IGenricRepository<T> where T : class
+    public interface IGenericRepository<T> where T : class
     {
         T GetById(int id);
         IEnumerable<T> GetAll();

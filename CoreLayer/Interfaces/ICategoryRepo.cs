@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CoreLayer.Interfaces
 {
-    public interface ICategoryRepo:IGenricRepository<Category>
+    public interface ICategoryRepo:IGenericRepository<Category>
     {
         IEnumerable<Category> GetAllCategoreis();
     }

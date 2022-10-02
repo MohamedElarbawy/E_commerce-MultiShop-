@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CoreLayer.Interfaces
 {
-    public interface IProductsRepo:IGenricRepository<Product>
+    public interface IProductsRepo:IGenericRepository<Product>
     {
         IEnumerable<Product> GetProductsInCAtegory(int id);
         //IEnumerable<Product> GetProductsPerPage(int pageNumber,int pageSize);

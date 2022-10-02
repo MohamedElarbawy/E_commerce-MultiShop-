@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "RGsV9ze7MI/OH8jB0YjPNAWfua459wfEGc7kIjPbASs=",
+  "Hash": "8tW1TgdackPwunJ1b/LgIFI9zpmJwBiLZ9sOKWmjlpQ=",
   "Source": "MVC_Layer",
   "BasePath": "_content/MVC_Layer",
   "Mode": "Default",
@@ -1562,6 +1562,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\TOSHIBA\\Downloads\\Documents\\My1stE_CommerceSite\\MVC_Layer\\wwwroot\\img\\c02859cd-6311-41f2-be04-7f2b99111c62pexels-andrea-piacquadio-845457.jpg",
+      "SourceId": "MVC_Layer",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\TOSHIBA\\Downloads\\Documents\\My1stE_CommerceSite\\MVC_Layer\\wwwroot\\",
+      "BasePath": "_content/MVC_Layer",
+      "RelativePath": "img/c02859cd-6311-41f2-be04-7f2b99111c62pexels-andrea-piacquadio-845457.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\c02859cd-6311-41f2-be04-7f2b99111c62pexels-andrea-piacquadio-845457.jpg"
     },
     {
       "Identity": "C:\\Users\\TOSHIBA\\Downloads\\Documents\\My1stE_CommerceSite\\MVC_Layer\\wwwroot\\img\\carousel-1.jpg",
