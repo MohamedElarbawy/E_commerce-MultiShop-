@@ -1,9 +1,11 @@
 ﻿using CoreLayer.Entities;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace BusinessLogicLayer
 {
-    public partial class MultiShopContext:DbContext
+    public partial class MultiShopContext:IdentityDbContext
     {
         public MultiShopContext()
         {
@@ -35,7 +37,10 @@ namespace BusinessLogicLayer
                     .HasForeignKey(d => d.ProductColorId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Products_Colors");
+
+                
             });
+            base.OnModelCreating(modelBuilder);
 
             OnModelCreatingPartial(modelBuilder);
         }

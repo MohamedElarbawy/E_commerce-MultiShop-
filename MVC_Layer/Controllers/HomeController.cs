@@ -11,8 +11,8 @@ namespace MVC_Layer.Controllers
     public class HomeController : Controller
     {
         private readonly IUnitOfWork unitOfWork;
-       
-
+        //[FromQuery]
+        //public List<string> color { get; set; }
         public HomeController(IUnitOfWork unitOfWork)
         {
             this.unitOfWork = unitOfWork;
@@ -36,10 +36,9 @@ namespace MVC_Layer.Controllers
         }
         public IActionResult Shop(int pageSize, int pageNumber = 1)
         {
-
+           //ViewBag.x= HttpContext.Request.Query["color"];
             
-            if (pageNumber < 1)
-                pageNumber = 1;
+           
             int totalItems = unitOfWork.Products.NumberOfItems();
 
             var pager = new Pager(totalItems, pageNumber, pageSize);
@@ -49,10 +48,24 @@ namespace MVC_Layer.Controllers
             return View(products);
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        //public IActionResult Error()
+        //{
+        //    return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        //}
     }
 }
