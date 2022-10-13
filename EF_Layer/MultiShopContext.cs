@@ -22,7 +22,7 @@ namespace BusinessLogicLayer
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Product>(entity =>
+            modelBuilder.Entity<Product>( entity =>
             {
                
 
@@ -40,7 +40,13 @@ namespace BusinessLogicLayer
 
                 
             });
-            base.OnModelCreating(modelBuilder);
+           
+            modelBuilder.Entity<Product>()
+                .Property(p=>p.IsActive)
+                .HasDefaultValue(true);
+
+
+             base.OnModelCreating(modelBuilder);
 
             OnModelCreatingPartial(modelBuilder);
         }

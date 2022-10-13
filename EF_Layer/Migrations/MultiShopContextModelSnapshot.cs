@@ -72,7 +72,9 @@ namespace BusinessLogicLayer.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
 
                     b.Property<int?>("ProductCaregoryId")
                         .HasColumnType("int");

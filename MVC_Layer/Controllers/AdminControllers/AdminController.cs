@@ -43,5 +43,22 @@ namespace MVC_Layer.Controllers.AdminControllers
             unitOfWork.Complete();
             return RedirectToAction("Index");
         }
+
+        public IActionResult SoftDelete(int id)
+        {
+            unitOfWork.Products.ChangeActiveStateToFalse(id);
+            unitOfWork.Complete();
+
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult ShowProduct(int id)
+        {
+            unitOfWork.Products.ChangeActiveStateToTrue(id);
+            unitOfWork.Complete();
+
+            return RedirectToAction("Index");
+        }
+
     }
 }

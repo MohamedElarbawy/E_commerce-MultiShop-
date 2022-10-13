@@ -28,6 +28,7 @@ namespace CoreLayer.Entities
         public IFormFile ImgUrl { get; set; }
 
         public string?  ImgName { get; set; }
+     
         public bool IsActive { get; set; }
 
         [ForeignKey("ProductCaregoryId")]

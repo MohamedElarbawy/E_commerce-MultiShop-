@@ -1,10 +1,18 @@
-﻿namespace MVC_Layer.Models
+﻿using Microsoft.AspNetCore.Mvc;
+
+namespace MVC_Layer.Models
 {
     public class FilterViewModel
     {
-        
-        List<string> Colors { get; set; }
-        decimal? MaxPrice { get; set; }
-        decimal? MinPrice { get; set; }
+
+        [FromQuery(Name="color")]
+       public List<string> Colors { get; set; }
+       
+        public decimal? MaxPrice { get; set; }
+        public decimal? MinPrice { get; set; }
+
+
+
+       
     }
 }

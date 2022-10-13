@@ -11,8 +11,7 @@ namespace MVC_Layer.Controllers
     public class HomeController : Controller
     {
         private readonly IUnitOfWork unitOfWork;
-        //[FromQuery]
-        //public List<string> color { get; set; }
+     
         public HomeController(IUnitOfWork unitOfWork)
         {
             this.unitOfWork = unitOfWork;
@@ -21,34 +20,37 @@ namespace MVC_Layer.Controllers
         public IActionResult Index()
         {
             ViewBag.categories = unitOfWork.Categories.GetAllCategoreis();
-           var products= unitOfWork.Products.GetAll();
+            ViewBag.recentProducts = unitOfWork.Products.GetLastAddedProducts(10);
+            var products = unitOfWork.Products.GetAllActiveProducts();
             return View(products);
         }
+
        public IActionResult ProductDetails(int id)
         {
             var product = unitOfWork.Products.GetById(id);
             return View(product);
         }
+
         public IActionResult GetProductsInCategory(int id)
         {
             var product = unitOfWork.Products.GetProductsInCAtegory(id);
             return View(product);
         }
-        public IActionResult Shop(int pageSize, int pageNumber = 1)
+
+        public IActionResult Shop(int pageSize, int pageNumber )
         {
-           //ViewBag.x= HttpContext.Request.Query["color"];
-            
-           
-            int totalItems = unitOfWork.Products.NumberOfItems();
+                  
+             int totalItems = unitOfWork.Products.NumberOfItems();
 
             var pager = new Pager(totalItems, pageNumber, pageSize);
+            var filter = new FilterViewModel();
 
+            ViewBag.filter = filter;
             ViewBag.Pager=pager;
             var products = unitOfWork.Products.GetItemsPerPage(pageNumber, pageSize);
             return View(products);
         }
-
-
+  
 
 
 

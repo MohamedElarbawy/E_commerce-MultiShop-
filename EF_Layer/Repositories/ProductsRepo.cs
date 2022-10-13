@@ -17,14 +17,51 @@ namespace BusinessLogicLayer.Repositories
             this.context = context;
         }
 
+        public IEnumerable<Product> GetAllActiveProducts()
+        {
+            return context.Products.Where(p => p.IsActive).ToList();
+        }
+
         public IEnumerable<Product> GetProductsInCAtegory(int id)
         {
             return context.Products.Where(p => p.ProductCaregoryId == id).ToList();
         }
 
-        //public IEnumerable<Product> GetProductsPerPage(int pageNumber, int pageSize)
-        //{
-        //    return context.Products.Skip((pageNumber-1)*pageSize).Take(pageSize).ToList();
-        //}
+        
+
+
+        public IEnumerable<Product> FilterProductsByPrice(int min, int max)
+        {
+            return context.Products.Where(p => p.ProductPrice > min && p.ProductPrice < max).ToList();
+        }
+
+
+
+        public IEnumerable<Product> GetLastAddedProducts(int NumberOfProducts = 10)
+        {
+            if (NumberOfProducts <= 0)
+                NumberOfProducts = 10;
+            return context.Products.OrderByDescending(x => x.Id).Take(NumberOfProducts).ToList();
+        }
+
+        public void ChangeActiveStateToFalse(int id)
+        {
+           var SelectedProduct= context.Products.Find(id);
+            if (SelectedProduct != null)
+            {
+                if(SelectedProduct.IsActive)
+                SelectedProduct.IsActive = false;
+            }
+        }
+
+        public void ChangeActiveStateToTrue(int id)
+        {
+            var SelectedProduct = context.Products.Find(id);
+            if (SelectedProduct != null)
+            {
+                if(!SelectedProduct.IsActive)
+                SelectedProduct.IsActive = true;
+            }
+        }
     }
 }
