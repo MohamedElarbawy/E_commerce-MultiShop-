@@ -1,0 +1,51 @@
+﻿@model CoreLayer.Entities.Product
+@{
+    Layout = "_AdminLayout";
+}
+<div class="card mb-4">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h5 class="mb-0">Basic Layout</h5>
+        <small class="text-muted float-end">Default label</small>
+    </div>
+    <div class="card-body">
+        <form asp-action="ConfirmEdit" asp-controller="Admin"  enctype="multipart/form-data">
+                 <div class="mb-3">
+                <label class="form-label">Id</label>
+                <input type="text" disabled class="form-control"  asp-for="Id">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">product Name</label>
+                <input type="text" class="form-control" placeholder="product name" asp-for="ProductName">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Price</label>
+                <input type="number" class="form-control"  asp-for="ProductPrice">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Size</label>
+                <div class="input-group input-group-merge">
+                    <input type="text" class="form-control" asp-for="productSize">
+                </div>
+               
+            </div>
+
+            <div class="mb-3">
+                <input class="form-check-input" type="checkbox"  asp-for="IsActive" >
+                <label class="form-check-label" asp-for="IsActive"> IsActive </label>
+           </div>
+            <div class="mb-3">
+                <label class="form-label" for="basic-default-message">Description</label>
+                <textarea class="form-control" placeholder="Product description" asp-for="ProductDescription"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="formFile" class="form-label">Upload Image</label>
+                <input class="form-control" type="file" asp-for="ImgUrl" accept="image/*"
+                          onchange="document.getElementById('productPicture').src=window.URL.createObjectURL(this.files[0])" />
+            </div>
+            <div>
+                <img class="profile-picture" id="productPicture" alt="choose image to show here" style="height:15%;width:15%"  />
+            </div>
+            <button type="submit" class="btn btn-primary">Confirm Edit</button>
+        </form>
+    </div>
+</div>

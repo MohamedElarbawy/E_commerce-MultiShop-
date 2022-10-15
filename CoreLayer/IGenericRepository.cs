@@ -12,7 +12,7 @@ namespace CoreLayer
         IEnumerable<T> GetAll();
         T Add(T entity);
         T Update(T entity);
-        void Delete(T entity);
+        void Delete(int Id);
 
        //pagination
         public IEnumerable<T> GetItemsPerPage(int pageNumber, int pageSize);

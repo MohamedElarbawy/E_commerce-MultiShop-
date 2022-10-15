@@ -1,5 +1,6 @@
 ﻿using CoreLayer.Entities;
 using CoreLayer.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,7 @@ namespace BusinessLogicLayer.Repositories
 
         public IEnumerable<Product> GetAllActiveProducts()
         {
-            return context.Products.Where(p => p.IsActive).ToList();
+            return context.Products.Where(p => p.IsActive).Include(x => x.ProductColor).ToList();
         }
 
         public IEnumerable<Product> GetProductsInCAtegory(int id)
@@ -27,7 +28,7 @@ namespace BusinessLogicLayer.Repositories
             return context.Products.Where(p => p.ProductCaregoryId == id).ToList();
         }
 
-        
+
 
 
         public IEnumerable<Product> FilterProductsByPrice(int min, int max)
@@ -46,11 +47,11 @@ namespace BusinessLogicLayer.Repositories
 
         public void ChangeActiveStateToFalse(int id)
         {
-           var SelectedProduct= context.Products.Find(id);
+            var SelectedProduct = context.Products.Find(id);
             if (SelectedProduct != null)
             {
-                if(SelectedProduct.IsActive)
-                SelectedProduct.IsActive = false;
+                if (SelectedProduct.IsActive)
+                    SelectedProduct.IsActive = false;
             }
         }
 
@@ -59,9 +60,24 @@ namespace BusinessLogicLayer.Repositories
             var SelectedProduct = context.Products.Find(id);
             if (SelectedProduct != null)
             {
-                if(!SelectedProduct.IsActive)
-                SelectedProduct.IsActive = true;
+                if (!SelectedProduct.IsActive)
+                    SelectedProduct.IsActive = true;
             }
+        }
+
+
+        public IEnumerable<Product> GetAllProductsWithIds(List<int> ids)
+        {
+            List<Product> productsList = new List<Product>();
+            if (ids != null)
+            {
+                foreach (var id in ids)
+                {
+                    productsList.Add(context.Products.Find(id));
+
+                }
+            }
+            return productsList;
         }
     }
 }

@@ -16,5 +16,6 @@ namespace CoreLayer.Interfaces
         IEnumerable<Product> GetLastAddedProducts(int NumberOfProducts);
         void ChangeActiveStateToFalse(int id);
         void ChangeActiveStateToTrue(int id);
+        IEnumerable<Product> GetAllProductsWithIds(List<int> ids);
     }
 }

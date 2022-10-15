@@ -23,4 +23,8 @@
     <ProjectReference Include="..\EF_Layer\BusinessLogicLayer.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\ShoppingCart\" />
+  </ItemGroup>
+
 </Project>

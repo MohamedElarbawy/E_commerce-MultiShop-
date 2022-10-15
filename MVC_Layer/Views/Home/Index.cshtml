@@ -1,4 +1,4 @@
-﻿@model IList<CoreLayer.Entities.Product>
+﻿@model IEnumerable<CoreLayer.Entities.Product>
 @{
     ViewData["Title"] = "Home Page";
 }@*
@@ -140,7 +140,14 @@
                     <div class="product-img position-relative overflow-hidden">
                         <img class="img-fluid w-100" src="~/img/@item.ImgName" alt="">
                         <div class="product-action">
-                            <a class="btn btn-outline-dark btn-square" title="Add To Cart" data-product-id="@item.Id" onclick="addToCart(this)"><i class="fa fa-shopping-cart"></i></a>
+                            <a class="btn btn-outline-dark btn-square" title="Add To Cart" 
+                            data-product-id     ="@item.Id"
+                            data-product-name   ="@item.ProductName"
+                            data-product-img    ="@item.ImgName"
+                            data-product-price  ="@item.ProductPrice"
+                            data-product-color  ="@item.ProductColor?.Color"
+                            data-product-colorId  ="@item.ProductColor?.Id"
+                            onclick="addToCart(this)"><i class="fa fa-shopping-cart"></i></a>
                             <a class="btn btn-outline-dark btn-square" title="Add To WishList" data-product-id-wishlist="@item.Id" onclick="addToWishLIst(this)"><i class="far fa-heart"></i></a>
                        
                         </div>

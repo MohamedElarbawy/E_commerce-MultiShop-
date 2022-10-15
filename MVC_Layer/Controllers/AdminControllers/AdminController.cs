@@ -36,13 +36,41 @@ namespace MVC_Layer.Controllers.AdminControllers
 
         [HttpPost]
      
-        public IActionResult AddProduct(Product pr)
+        public IActionResult AddProduct(Product entity)
         {
-            unitOfWork.Products.Add(pr);
-            pr.ImgName = UploadFile.SaveFile(pr.ImgUrl, "img");
+            unitOfWork.Products.Add(entity);
+            entity.ImgName = UploadFile.SaveFile(entity.ImgUrl, "img");
             unitOfWork.Complete();
             return RedirectToAction("Index");
         }
+      
+        public IActionResult Edit(int id)
+        {
+            var product = unitOfWork.Products.GetById(id);
+            return View(product);
+            
+        }
+       
+        public IActionResult ConfirmEdit(Product entity)
+        {
+            unitOfWork.Products.Update(entity);
+            unitOfWork.Complete();
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult Delete(int id)
+        {
+            var product = unitOfWork.Products.GetById(id);
+            return View(product);
+        }
+        public IActionResult ConfirmDelete(int id)
+        {
+           
+                unitOfWork.Products.Delete(id);
+            unitOfWork.Complete();
+            return RedirectToAction("Index");
+        }
+
 
         public IActionResult SoftDelete(int id)
         {

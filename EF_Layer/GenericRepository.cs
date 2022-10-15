@@ -22,8 +22,8 @@ namespace BusinessLogicLayer
         }
         public T GetById(int id)
         {
-            var x= _context.Set<T>().Find(id);
-            return x;
+            var entity= _context.Set<T>().Find(id);
+            return entity;
         }
         public T Add(T entity)
         {
@@ -33,8 +33,9 @@ namespace BusinessLogicLayer
 
         }
 
-        public void Delete(T entity)
+        public void Delete(int id)
         {
+            var entity = GetById(id);
             _context.Set<T>().Remove(entity);
 
         }

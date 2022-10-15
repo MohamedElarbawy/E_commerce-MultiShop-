@@ -2,6 +2,7 @@ C:\Users\TOSHIBA\Downloads\Documents\My1stE_CommerceSite\CoreLayer\bin\Debug\net
 C:\Users\TOSHIBA\Downloads\Documents\My1stE_CommerceSite\CoreLayer\bin\Debug\net6.0\CoreLayer.dll
 C:\Users\TOSHIBA\Downloads\Documents\My1stE_CommerceSite\CoreLayer\bin\Debug\net6.0\ref\CoreLayer.dll
 C:\Users\TOSHIBA\Downloads\Documents\My1stE_CommerceSite\CoreLayer\bin\Debug\net6.0\CoreLayer.pdb
+C:\Users\TOSHIBA\Downloads\Documents\My1stE_CommerceSite\CoreLayer\obj\Debug\net6.0\CoreLayer.csproj.AssemblyReference.cache
 C:\Users\TOSHIBA\Downloads\Documents\My1stE_CommerceSite\CoreLayer\obj\Debug\net6.0\CoreLayer.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\TOSHIBA\Downloads\Documents\My1stE_CommerceSite\CoreLayer\obj\Debug\net6.0\CoreLayer.AssemblyInfoInputs.cache
 C:\Users\TOSHIBA\Downloads\Documents\My1stE_CommerceSite\CoreLayer\obj\Debug\net6.0\CoreLayer.AssemblyInfo.cs
@@ -9,4 +10,3 @@ C:\Users\TOSHIBA\Downloads\Documents\My1stE_CommerceSite\CoreLayer\obj\Debug\net
 C:\Users\TOSHIBA\Downloads\Documents\My1stE_CommerceSite\CoreLayer\obj\Debug\net6.0\CoreLayer.dll
 C:\Users\TOSHIBA\Downloads\Documents\My1stE_CommerceSite\CoreLayer\obj\Debug\net6.0\ref\CoreLayer.dll
 C:\Users\TOSHIBA\Downloads\Documents\My1stE_CommerceSite\CoreLayer\obj\Debug\net6.0\CoreLayer.pdb
-C:\Users\TOSHIBA\Downloads\Documents\My1stE_CommerceSite\CoreLayer\obj\Debug\net6.0\CoreLayer.csproj.AssemblyReference.cache
