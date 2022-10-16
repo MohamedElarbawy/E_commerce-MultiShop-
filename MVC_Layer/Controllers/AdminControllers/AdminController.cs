@@ -57,20 +57,16 @@ namespace MVC_Layer.Controllers.AdminControllers
             unitOfWork.Complete();
             return RedirectToAction("Index");
         }
-
+        [HttpPost]
         public IActionResult Delete(int id)
         {
-            var product = unitOfWork.Products.GetById(id);
-            return View(product);
-        }
-        public IActionResult ConfirmDelete(int id)
-        {
-           
-                unitOfWork.Products.Delete(id);
+            unitOfWork.Products.Delete(id);
             unitOfWork.Complete();
             return RedirectToAction("Index");
-        }
 
+            
+        }
+      
 
         public IActionResult SoftDelete(int id)
         {

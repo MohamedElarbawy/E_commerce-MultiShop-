@@ -15,7 +15,7 @@ namespace CoreLayer
         void Delete(int Id);
 
        //pagination
-        public IEnumerable<T> GetItemsPerPage(int pageNumber, int pageSize);
+        public IEnumerable<T> GetItemsPerPage(int pageNumber, int pageSize,IEnumerable<T> totalItems);
         public int NumberOfItems();
        
 

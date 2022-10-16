@@ -177,5 +177,33 @@ function SendLocalStorage() {
 
 };
 
+//alert in admin page when delete
 
+function alert(id) {
+    swal({
+        title: "Are you sure?",
+        text: "This Product Will Be Deleted permanently From Database",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+    })
+        .then((willDelete) => {
+            if (willDelete) {
+                confirmDelete(id);               
+            } 
+            
+        });
+}
 
+function confirmDelete (productId){
+    $.ajax({
+        type: "post",
+        url: "/Admin/delete",
+        data: { id: productId },
+        success: function (result) {
+            location.reload();
+        }
+
+    });
+
+};

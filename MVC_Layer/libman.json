@@ -9,6 +9,10 @@
     {
       "library": "jquery-validate@1.19.5",
       "destination": "wwwroot/js/jquery-validate/"
+    },
+    {
+      "library": "sweetalert@2.1.2",
+      "destination": "wwwroot/js/sweetalert/"
     }
   ]
 }

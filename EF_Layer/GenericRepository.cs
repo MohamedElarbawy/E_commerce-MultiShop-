@@ -47,15 +47,15 @@ namespace BusinessLogicLayer
         }
 
         //pagination
-        public IEnumerable<T> GetItemsPerPage(int pageNumber, int pageSize)
+        public IEnumerable<T> GetItemsPerPage(int pageNumber, int pageSize,IEnumerable<T> totalItems)
         {
             if(pageNumber<1)
                 pageNumber = 1;
             if(pageSize<1)
-                pageSize = 20;
+                pageSize = 10;
            
             
-            return _context.Set<T>().Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
+            return totalItems.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
         }
 
         public int NumberOfItems()

@@ -31,9 +31,39 @@ namespace BusinessLogicLayer.Repositories
 
 
 
-        public IEnumerable<Product> FilterProductsByPrice(int min, int max)
+        public IEnumerable<Product> FilterProductsByPrice(string priceRange)
         {
-            return context.Products.Where(p => p.ProductPrice > min && p.ProductPrice < max).ToList();
+            int min = 0, max = int.MaxValue;
+            if (priceRange != null && priceRange.Length != 0)
+            {
+                var priceQueryString = priceRange.Split("-");
+                if (priceQueryString.Length == 2)
+                    try
+                    {
+                        min = Convert.ToInt32(priceQueryString.FirstOrDefault());
+                        max = Convert.ToInt32(priceQueryString.LastOrDefault());
+                        var result = context.Products.Where(p => p.ProductPrice > min && p.ProductPrice <= max && p.IsActive).ToList();
+                        return result;
+                    }
+
+                    catch
+                    {
+                        return Enumerable.Empty<Product>();
+                    }
+            }
+            return GetAllActiveProducts();
+        }
+
+        public IEnumerable<Product> FilterProductsByColor(string colors)
+        {
+            List<Product> products = new List<Product>();
+            if (colors != null && colors.Length != 0)
+            {
+                foreach (var color in colors)
+                    products.AddRange(context.Products.Where(p => p.ProductColorId == color && p.IsActive).ToList());
+                return products;
+            }
+            return GetAllActiveProducts();
         }
 
 

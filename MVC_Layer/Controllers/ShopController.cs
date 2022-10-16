@@ -11,10 +11,6 @@ namespace MVC_Layer.Controllers
         {
             this.unitOfWork = unitOfWork;
         }
-        public JsonResult Filter(int min,int max)
-        {
-            var result= unitOfWork.Products.FilterProductsByPrice(min,max);
-            return Json(new { result });
-        }
+       
     }
 }

@@ -13,10 +13,12 @@
         {
 
         }
-        public Pager(int totalItems,int pageNumber=1 ,int pageSize=15)
+        public Pager(int totalItems,int pageNumber=1 ,int pageSize=10)
         {
             if(pageSize<=0)
-                pageSize = 15;
+                pageSize = 10;
+            if(pageNumber<=0)
+                pageNumber = 1;
             int totalPages = (int)Math.Ceiling((decimal)totalItems / (decimal)pageSize);
             int currentPage = pageNumber;
 

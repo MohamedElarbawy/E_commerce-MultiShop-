@@ -11,21 +11,22 @@ namespace MVC_Layer.Controllers
     public class HomeController : Controller
     {
         private readonly IUnitOfWork unitOfWork;
-     
+
         public HomeController(IUnitOfWork unitOfWork)
         {
             this.unitOfWork = unitOfWork;
-         
+
         }
         public IActionResult Index()
         {
             ViewBag.categories = unitOfWork.Categories.GetAllCategoreis();
-            ViewBag.recentProducts = unitOfWork.Products.GetLastAddedProducts(10);
+            ViewBag.recentProducts = unitOfWork.Products.GetLastAddedProducts(12);
             var products = unitOfWork.Products.GetAllActiveProducts();
+
             return View(products);
         }
 
-       public IActionResult ProductDetails(int id)
+        public IActionResult ProductDetails(int id)
         {
             var product = unitOfWork.Products.GetById(id);
             return View(product);
@@ -37,20 +38,26 @@ namespace MVC_Layer.Controllers
             return View(product);
         }
 
-        public IActionResult Shop(int pageSize, int pageNumber )
+        public IActionResult Shop(int pageSize, int pageNumber)
         {
-                  
-             int totalItems = unitOfWork.Products.NumberOfItems();
+            //int totalItems = unitOfWork.Products.NumberOfItems();
 
+            var priceRange = HttpContext.Request.Query["price"];
+            var colors = HttpContext.Request.Query["color"];
+            var totalProducts = unitOfWork.Products.FilterProductsByPrice(priceRange);
+            //if (colors.Count > 0)
+            //    totalProducts = unitOfWork.Products.FilterProductsBycolor(colors);
+
+            var totalItems = totalProducts.Count();
             var pager = new Pager(totalItems, pageNumber, pageSize);
-            var filter = new FilterViewModel();
+            ViewBag.Pager = pager;
 
-            ViewBag.filter = filter;
-            ViewBag.Pager=pager;
-            var products = unitOfWork.Products.GetItemsPerPage(pageNumber, pageSize);
+
+            var products = unitOfWork.Products.GetItemsPerPage(pageNumber, pageSize, totalProducts);
+
             return View(products);
         }
-  
+
 
 
 
