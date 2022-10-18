@@ -13,7 +13,7 @@
 
         <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
             <div class="app-brand demo">
-                <a href="index.html" class="app-brand-link">
+                <a href="/admin/index" class="app-brand-link">
                     <span class="app-brand-logo demo">
                         <svg width="25"
                              viewBox="0 0 25 42"
@@ -59,7 +59,7 @@
                                         </g>
                         </svg>
                     </span>
-                    <span class="app-brand-text demo menu-text fw-bolder ms-2">Sneat</span>
+                    <span class="app-brand-text demo menu-text fw-bolder ms-2">Multi Shop</span>
                 </a>
 
                 <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
@@ -71,15 +71,15 @@
 
             <ul class="menu-inner py-1">
                 <!-- Dashboard -->
-                <li class="menu-item">
-                    <a href="index.html" class="menu-link">
+                <li class="menu-item active">
+                    <a href="/admin/index" class="menu-link">
                         <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                        <div data-i18n="Analytics">Dashboard</div>
+                        <div data-i18n="Analytics">Products</div>
                     </a>
                 </li>
 
                 <!-- Layouts -->
-                <li class="menu-item">
+               @* <li class="menu-item">
                     <a href="javascript:void(0);" class="menu-link menu-toggle">
                         <i class="menu-icon tf-icons bx bx-layout"></i>
                         <div data-i18n="Layouts">Layouts</div>
@@ -112,7 +112,7 @@
                             </a>
                         </li>
                     </ul>
-                </li>
+                </li>*@
 
                 <li class="menu-header small text-uppercase">
                     <span class="menu-header-text">Pages</span>
@@ -120,9 +120,9 @@
                 <li class="menu-item">
                     <a href="javascript:void(0);" class="menu-link menu-toggle">
                         <i class="menu-icon tf-icons bx bx-dock-top"></i>
-                        <div data-i18n="Account Settings">Account Settings</div>
+                        <div data-i18n="Account Settings">Orders</div>
                     </a>
-                    <ul class="menu-sub">
+                  @*  <ul class="menu-sub">
                         <li class="menu-item">
                             <a href="pages-account-settings-account.html" class="menu-link">
                                 <div data-i18n="Account">Account</div>
@@ -138,14 +138,14 @@
                                 <div data-i18n="Connections">Connections</div>
                             </a>
                         </li>
-                    </ul>
+                    </ul>*@
                 </li>
                 <li class="menu-item">
                     <a href="javascript:void(0);" class="menu-link menu-toggle">
                         <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
-                        <div data-i18n="Authentications">Authentications</div>
+                        <div data-i18n="Authentications">Users</div>
                     </a>
-                    <ul class="menu-sub">
+                  @*  <ul class="menu-sub">
                         <li class="menu-item">
                             <a href="auth-login-basic.html" class="menu-link" target="_blank">
                                 <div data-i18n="Basic">Login</div>
@@ -161,14 +161,14 @@
                                 <div data-i18n="Basic">Forgot Password</div>
                             </a>
                         </li>
-                    </ul>
+                    </ul>*@
                 </li>
                 <li class="menu-item">
                     <a href="javascript:void(0);" class="menu-link menu-toggle">
                         <i class="menu-icon tf-icons bx bx-cube-alt"></i>
                         <div data-i18n="Misc">Misc</div>
                     </a>
-                    <ul class="menu-sub">
+                   @* <ul class="menu-sub">
                         <li class="menu-item">
                             <a href="pages-misc-error.html" class="menu-link">
                                 <div data-i18n="Error">Error</div>
@@ -179,15 +179,16 @@
                                 <div data-i18n="Under Maintenance">Under Maintenance</div>
                             </a>
                         </li>
-                    </ul>
+                    </ul>*@
                 </li>
                 <!-- Components -->
                 <li class="menu-header small text-uppercase"><span class="menu-header-text">Components</span></li>
                 <!-- Cards -->
                 <li class="menu-item">
-                    <a href="cards-basic.html" class="menu-link">
+      
+                    <a asp-action="CreatAccount" asp-controller="account" class="menu-link">
                         <i class="menu-icon tf-icons bx bx-collection"></i>
-                        <div data-i18n="Basic">Cards</div>
+                        <div data-i18n="Basic">Add New Admin</div>
                     </a>
                 </li>
                 <!-- User interface -->
@@ -296,7 +297,7 @@
                 </li>
 
                 <!-- Extended components -->
-                <li class="menu-item">
+         @*       <li class="menu-item">
                     <a href="javascript:void(0)" class="menu-link menu-toggle">
                         <i class="menu-icon tf-icons bx bx-copy"></i>
                         <div data-i18n="Extended UI">Extended UI</div>
@@ -320,9 +321,9 @@
                         <i class="menu-icon tf-icons bx bx-crown"></i>
                         <div data-i18n="Boxicons">Boxicons</div>
                     </a>
-                </li>
+                </li>*@
 
-                <!-- Forms & Tables -->
+             @*   <!-- Forms & Tables -->
                 <li class="menu-header small text-uppercase"><span class="menu-header-text">Forms &amp; Tables</span></li>
                 <!-- Forms -->
                 <li class="menu-item">
@@ -360,36 +361,15 @@
                             </a>
                         </li>
                     </ul>
-                </li>
+                </li>*@
                 <!-- Tables -->
-                <li class="menu-item active">
+                <li class="menu-item">
                     <a href="tables-basic.html" class="menu-link">
                         <i class="menu-icon tf-icons bx bx-table"></i>
                         <div data-i18n="Tables">Tables</div>
                     </a>
                 </li>
-                <!-- Misc -->
-                <li class="menu-header small text-uppercase"><span class="menu-header-text">Misc</span></li>
-                <li class="menu-item">
-                    <a href="https://github.com/themeselection/sneat-html-admin-template-free/issues"
-                       target="_blank"
-                       class="menu-link">
-                        class="menu-link">
-                        >>
-                        <i class="menu-icon tf-icons bx bx-support"></i>
-                        <div data-i18n="Support">Support</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
-                       target="_blank"
-                       class="menu-link">
-                        class="menu-link">
-                        >>
-                        <i class="menu-icon tf-icons bx bx-file"></i>
-                        <div data-i18n="Documentation">Documentation</div>
-                    </a>
-                </li>
+          
             </ul>
         </aside>
         <!-- / Menu -->
@@ -3826,24 +3806,29 @@
                     <!-- Responsive Table -->
 
                     <div class="card">
-                        <h5 class="card-header">Responsive Table</h5>
+                        <h5 class="card-header">Total Products = @ViewBag.TotalProducts </h5>
                         <div class="table-responsive text-nowrap">
                             <table class="table">
                                 <thead>
                                     <tr class="text-nowrap">
                                         <th>id</th>
+                                        <th>#</th>
                                         <th>Actions</th>
                                         <th>ProductName</th>
                                         <th>ProductPrice</th>
                                         <th>Image</th>
-                                        <th>productSize</th>
+                                        <th>productCategory</th>
                                         <th>IsActive</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                            @{var i = 1;}
                                     @foreach (var item in Model)
                                     {
-<tr><th scope="row">@item.Id</th>
+                                       
+                                      
+                                        <tr><th scope="row">@item.Id</th>
+                                            <td>@(i++)</td>
                                             <td><div class="dropdown">
                                                     <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
                                                         <i class="bx bx-dots-vertical-rounded"></i>
@@ -3856,23 +3841,22 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td>@item.ProductName</td>
+                                            <td><a asp-action="Details" asp-controller="Admin" asp-route-id="@item.Id">@item.ProductName</a></td>
                                             <td>@item.ProductPrice</td>
                                             <td>
                                                 <img src="~/img/@item.ImgName" width="50" height="50">
                                             </td>
-                                            <td>@item.productSize</td>
-
-
-
-
-
+                                            <td>@item.ProductCaregory.CategoryName</td>
+                                      
                                             <td class="ps-2 pe-2 pt-1 pb-1 fw-bold   @(@item.IsActive?"text-success":"text-danger") ">@item.IsActive</td>
-
+                                            
                                         </tr>
                                     }
                                 </tbody>
+
+
                             </table>
+                <partial name="_Pagination" model="@ViewBag.Pager"  />
                         </div>
                     </div>
 
@@ -3883,32 +3867,7 @@
                     <!--/ Responsive Table -->
                 </div>
                 <!-- / Content -->
-                <!-- Footer -->
-                <footer class="content-footer footer bg-footer-theme">
-                    <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
-                        <div class="mb-2 mb-md-0">
-                            ©
-                            <script>
-                                document.write(new Date().getFullYear());
-                            </script>
-                            , made with ❤️ by
-                            <a href="https://themeselection.com" target="_blank" class="footer-link fw-bolder">ThemeSelection</a>
-                        </div>
-                        <div>
-                            <a href="https://themeselection.com/license/" class="footer-link me-4" target="_blank">License</a>
-                            <a href="https://themeselection.com/" target="_blank" class="footer-link me-4">More Themes</a>
-
-                            <a href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
-                               target="_blank"
-                               class="footer-link me-4">Documentation</a>
-
-                            <a href="https://github.com/themeselection/sneat-html-admin-template-free/issues"
-                               target="_blank"
-                               class="footer-link me-4">Support</a>>>
-                        </div>
-                    </div>
-                </footer>
-                <!-- / Footer -->
+            
 
                 <div class="content-backdrop fade"></div>
             </div>

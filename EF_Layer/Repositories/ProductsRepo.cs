@@ -18,9 +18,15 @@ namespace BusinessLogicLayer.Repositories
             this.context = context;
         }
 
+
+        public IEnumerable<Product> GetAllProductsWithCategory()
+        {
+            return context.Products.Include(p=>p.ProductCaregory).ToList();
+        }
+
         public IEnumerable<Product> GetAllActiveProducts()
         {
-            return context.Products.Where(p => p.IsActive).Include(x => x.ProductColor).ToList();
+            return context.Products.Where(p => p.IsActive)/*Include(x => x.ProductColor)*/.ToList();
         }
 
         public IEnumerable<Product> GetProductsInCAtegory(int id)
@@ -56,7 +62,7 @@ namespace BusinessLogicLayer.Repositories
 
         public IEnumerable<Product> FilterProductsByColor(string colors)
         {
-            List<Product> products = new List<Product>();
+            List<Product> products = new();
             if (colors != null && colors.Length != 0)
             {
                 foreach (var color in colors)
@@ -98,7 +104,7 @@ namespace BusinessLogicLayer.Repositories
 
         public IEnumerable<Product> GetAllProductsWithIds(List<int> ids)
         {
-            List<Product> productsList = new List<Product>();
+            List<Product> productsList = new ();
             if (ids != null)
             {
                 foreach (var id in ids)

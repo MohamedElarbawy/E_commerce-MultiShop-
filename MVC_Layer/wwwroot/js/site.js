@@ -67,7 +67,7 @@ function getNumberOfProductsInShoppingCart() {
 
 
 function appendProductsToCartBody() {
-    document.getElementById("cartBody").innerHTML = "";
+    document.getElementById("cartBody").innerHTML ="<h3>Your selected products will appear here</h3>";
  var   localStorageProducts = JSON.parse(localStorage.getItem("shoppingCartProducts"));
     console.log(localStorageProducts);
     console.log(typeof (localStorageProducts));
@@ -122,7 +122,7 @@ function addToWishLIst(product) {
     let id = product.getAttribute("data-product-id-wishlist");
    
     wishListProduct = {
-        productId: id
+        productId: id,
     }
     wishListProducts.push(wishListProduct);
 
@@ -207,3 +207,37 @@ function confirmDelete (productId){
     });
 
 };
+
+//document.getElementsByClassName("fa-plus").onclick = function () {
+
+
+
+
+//}
+(function ($) {
+$('.quantity button').on('click', function () {
+    var button = $(this);
+    var oldValue = button.parent().parent().find('input').val();
+    if (button.hasClass('btn-plus')) {
+        var newVal = parseFloat(oldValue) + 1;
+    } else {
+        if (oldValue > 1) {
+            var newVal = parseFloat(oldValue) - 1;
+        } else {
+            newVal = 1;
+        }
+    }
+    button.parent().parent().find('input').val(newVal);
+});
+    
+});
+
+
+
+
+
+//$(document).ready(function () {
+//    $("button").click(function () {
+//        $("#div1").load("/Some/ShopAjax", { query: "300-700" });
+//    });
+//});

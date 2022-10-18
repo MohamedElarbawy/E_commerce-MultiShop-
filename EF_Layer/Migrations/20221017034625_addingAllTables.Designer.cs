@@ -4,6 +4,7 @@ using BusinessLogicLayer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BusinessLogicLayer.Migrations
 {
     [DbContext(typeof(MultiShopContext))]
-    partial class MultiShopContextModelSnapshot : ModelSnapshot
+    [Migration("20221017034625_addingAllTables")]
+    partial class addingAllTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -122,73 +124,6 @@ namespace BusinessLogicLayer.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Colors");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            ColorName = "black"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            ColorName = "white"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            ColorName = "red"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            ColorName = "green"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            ColorName = "blue"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            ColorName = "magent"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            ColorName = "cyan"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            ColorName = "turquo"
-                        },
-                        new
-                        {
-                            Id = 9,
-                            ColorName = "brown"
-                        },
-                        new
-                        {
-                            Id = 10,
-                            ColorName = "grey"
-                        },
-                        new
-                        {
-                            Id = 11,
-                            ColorName = "beige"
-                        },
-                        new
-                        {
-                            Id = 12,
-                            ColorName = "pink"
-                        },
-                        new
-                        {
-                            Id = 13,
-                            ColorName = "purple"
-                        });
                 });
 
             modelBuilder.Entity("CoreLayer.Entities.Discount", b =>
@@ -239,7 +174,7 @@ namespace BusinessLogicLayer.Migrations
                         .IsRequired()
                         .ValueGeneratedOnAdd()
                         .HasColumnType("nvarchar(max)")
-                        .HasDefaultValue("e8b0fc1c-a828-4fa6-b27b-563c9b3de76bMultiShop");
+                        .HasDefaultValue("1832c645-666c-4b78-9bc3-f512fc6e6364MultiShop");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");

@@ -8,20 +8,24 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CoreLayer.Entities
 {
-    public partial class Colors
+    public partial class Color
     {
-        public Colors()
+        public Color()
         {
             Products = new HashSet<Product>();
+            CartItems = new HashSet<CartItem>();
         }
 
-        [Key]
+        
         public int Id { get; set; }
         //[Required]
         [StringLength(100)]
-        public string Color { get; set; }
+        public string ColorName { get; set; }
 
-        [InverseProperty("ProductColor")]
+        [InverseProperty("Colors")]
         public virtual ICollection<Product> Products { get; set; }
+        [InverseProperty("Colors")]
+        public virtual ICollection<CartItem> CartItems { get; set; }
+
     }
 }

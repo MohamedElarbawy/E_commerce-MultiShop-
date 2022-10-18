@@ -12,22 +12,46 @@ namespace MVC_Layer.Controllers.AdminControllers
     public class AdminController : Controller
     {
         private readonly IUnitOfWork unitOfWork;
-      
+
 
         public AdminController(IUnitOfWork unitOfWork)
         {
             this.unitOfWork = unitOfWork;
-           
+
         }
-       
-        
-        public IActionResult Index()
+
+
+        public IActionResult Index(int pageSize, int pageNumber)
         {
-            var products = unitOfWork.Products.GetAll();
+            var totalProducts = unitOfWork.Products.GetAllProductsWithCategory();
+
+            var totalItems = totalProducts.Count();
+            ViewBag.TotalProducts = totalItems;
+            var pager = new Pager(totalItems, pageNumber, pageSize);
+            ViewBag.Pager = pager;
+
+            var products = unitOfWork.Products.GetItemsPerPage(pageNumber, pageSize, totalProducts);
+
             return View(products);
         }
+
+
+        public IActionResult Details(int id)
+        {
+          var product=  unitOfWork.Products.GetById(id);
+            return View(product);
+        }
+
+
+
+
+
+
+
+
+
+
         [HttpGet]
-       
         public IActionResult AddProduct()
         {
 
@@ -35,7 +59,6 @@ namespace MVC_Layer.Controllers.AdminControllers
         }
 
         [HttpPost]
-     
         public IActionResult AddProduct(Product entity)
         {
             unitOfWork.Products.Add(entity);
@@ -43,14 +66,16 @@ namespace MVC_Layer.Controllers.AdminControllers
             unitOfWork.Complete();
             return RedirectToAction("Index");
         }
-      
+
         public IActionResult Edit(int id)
         {
             var product = unitOfWork.Products.GetById(id);
             return View(product);
-            
+
         }
-       
+
+
+        [HttpPost]
         public IActionResult ConfirmEdit(Product entity)
         {
             unitOfWork.Products.Update(entity);
@@ -64,9 +89,9 @@ namespace MVC_Layer.Controllers.AdminControllers
             unitOfWork.Complete();
             return RedirectToAction("Index");
 
-            
+
         }
-      
+
 
         public IActionResult SoftDelete(int id)
         {

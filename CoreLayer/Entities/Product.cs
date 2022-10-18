@@ -11,6 +11,12 @@ namespace CoreLayer.Entities
 {
     public partial class Product
     {
+        public Product()
+        {
+                Colors= new HashSet<Color>();
+        }
+
+
         [Key]
         public int? Id { get; set; }
         //[Required]
@@ -34,8 +40,10 @@ namespace CoreLayer.Entities
         [ForeignKey("ProductCaregoryId")]
         [InverseProperty("Products")]
         public virtual Category ProductCaregory { get; set; }
-        [ForeignKey("ProductColorId")]
+        //[ForeignKey("ProductColorId")]
         [InverseProperty("Products")]
-        public virtual Colors ProductColor { get; set; }
+        public virtual ICollection<Color> Colors { get; set; }
+        [InverseProperty("CartItemProduct")]
+        public virtual CartItem ProductCartItem { get; set; }
     }
 }

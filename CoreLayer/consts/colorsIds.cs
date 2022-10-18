@@ -6,21 +6,21 @@ using System.Threading.Tasks;
 
 namespace CoreLayer.consts
 {
-    public enum colorsIds
+    public enum ColorsIds
     {
-        black=0,
-        white=1,
-        red=2,
-        green=3,
-        blue=4,
-        magenta=5,
-        cyan=6,
-        magentagreen=7,
-        brown=8,
-        grey=9,
-        beige=10,
-        pink=11,
-        purple=12,
+        black   = 1,
+        white   = 2,
+        red     = 3,
+        green   = 4,
+        blue    = 5,
+        magenta = 6,
+        cyan    = 7,
+        turquoise = 8,
+        brown   = 9,
+        grey    = 10,
+        beige   = 11,
+        pink    = 12,
+        purple  = 13,
 
 
     }

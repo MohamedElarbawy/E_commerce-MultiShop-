@@ -5,7 +5,7 @@ namespace MVC_Layer.Models
     public class ProductViewModel
     {
         [Key]
-        public int? Id { get; set; }
+        public int Id { get; set; }
         //[Required]
         [StringLength(100)]
         public string? ProductName { get; set; }
