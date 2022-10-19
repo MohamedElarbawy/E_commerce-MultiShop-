@@ -1,11 +1,9 @@
-﻿using BusinessLogicLayer;
-using BusinessLogicLayer.Helper;
+﻿using BusinessLogicLayer.Helper;
 using CoreLayer;
 using CoreLayer.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using MVC_Layer.Models;
 
 namespace MVC_Layer.Controllers.AdminControllers
@@ -14,12 +12,12 @@ namespace MVC_Layer.Controllers.AdminControllers
     public class AdminController : Controller
     {
         private readonly IUnitOfWork unitOfWork;
-        private readonly MultiShopContext context;
 
-        public AdminController(IUnitOfWork unitOfWork,MultiShopContext context )
+
+        public AdminController(IUnitOfWork unitOfWork)
         {
             this.unitOfWork = unitOfWork;
-            this.context = context;
+
         }
 
 
@@ -40,7 +38,7 @@ namespace MVC_Layer.Controllers.AdminControllers
 
         public IActionResult Details(int id)
         {
-            var product = unitOfWork.Products.GetById(id);
+          var product=  unitOfWork.Products.GetById(id);
             return View(product);
         }
 
@@ -56,31 +54,15 @@ namespace MVC_Layer.Controllers.AdminControllers
         [HttpGet]
         public IActionResult AddProduct()
         {
-            List<SelectListItem> categoryListItems = unitOfWork.Categories.GetAll().Select(a => new SelectListItem
-            {
-                Text = a.CategoryName,
-                Value = a.Id.ToString()
-            }).ToList();
-            List<SelectListItem> colorListItems = unitOfWork.Colors.GetAll().Select(a => new SelectListItem
-            {
-                Text = a.ColorName,
-                Value = a.Id.ToString()
-            }).ToList();
-            ViewBag.categories = categoryListItems;
-            ViewBag.colors = colorListItems;
+
             return View();
         }
 
         [HttpPost]
-        public IActionResult AddProduct(Product entity,List<int> ColorsIds)
+        public IActionResult AddProduct(Product entity)
         {
-
-           var newProduct= unitOfWork.Products.Add(entity);
+            unitOfWork.Products.Add(entity);
             entity.ImgName = UploadFile.SaveFile(entity.ImgUrl, "img");
-            unitOfWork.Complete();
-
-         
-
             unitOfWork.Complete();
             return RedirectToAction("Index");
         }

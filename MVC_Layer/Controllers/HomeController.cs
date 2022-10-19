@@ -19,7 +19,7 @@ namespace MVC_Layer.Controllers
         }
         public IActionResult Index()
         {
-            ViewBag.categories = unitOfWork.Categories.GetAll();
+            ViewBag.categories = unitOfWork.Categories.GetAllCategoreis();
             ViewBag.recentProducts = unitOfWork.Products.GetLastAddedProducts(12);
             var products = unitOfWork.Products.GetAllActiveProducts();
 
@@ -84,7 +84,7 @@ namespace MVC_Layer.Controllers
 
         public JsonResult filter(string query)
         {
-            var products = unitOfWork.Products.FilterProductsByPrice(query);
+            var products = unitOfWork.Products.FilterProductsByPrice(query);          
 
             return Json(products);
         }

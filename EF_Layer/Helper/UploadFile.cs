@@ -11,7 +11,6 @@ namespace BusinessLogicLayer.Helper
     {
         public static string SaveFile(IFormFile file,string folderPath)
         {
-            try { 
             //Get directory
             string FilePath = Directory.GetCurrentDirectory() + "/wwwroot/" + folderPath;
             //get file name
@@ -24,10 +23,9 @@ namespace BusinessLogicLayer.Helper
             {
                 file.CopyTo(stream);
             }
-            return FileName;
-            }
-            catch { return ""; }
 
+
+            return FileName;
         }
 
         public static void RemoveFile(string FolderName, string RemovedFileName)

@@ -34,7 +34,7 @@ namespace BusinessLogicLayer.Migrations
 
                     b.HasIndex("ColorsId");
 
-                    b.ToTable("CartItemColor", (string)null);
+                    b.ToTable("CartItemColor");
                 });
 
             modelBuilder.Entity("ColorProduct", b =>
@@ -49,7 +49,7 @@ namespace BusinessLogicLayer.Migrations
 
                     b.HasIndex("ProductsId");
 
-                    b.ToTable("ColorProduct", (string)null);
+                    b.ToTable("ColorProduct");
                 });
 
             modelBuilder.Entity("CoreLayer.Entities.CartItem", b =>
@@ -83,7 +83,7 @@ namespace BusinessLogicLayer.Migrations
                     b.HasIndex("ProductId")
                         .IsUnique();
 
-                    b.ToTable("CartItems", (string)null);
+                    b.ToTable("CartItems");
                 });
 
             modelBuilder.Entity("CoreLayer.Entities.Category", b =>
@@ -104,7 +104,7 @@ namespace BusinessLogicLayer.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories", (string)null);
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("CoreLayer.Entities.Color", b =>
@@ -121,7 +121,7 @@ namespace BusinessLogicLayer.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Colors", (string)null);
+                    b.ToTable("Colors");
 
                     b.HasData(
                         new
@@ -214,7 +214,7 @@ namespace BusinessLogicLayer.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Discounts", (string)null);
+                    b.ToTable("Discounts");
                 });
 
             modelBuilder.Entity("CoreLayer.Entities.Order", b =>
@@ -237,7 +237,9 @@ namespace BusinessLogicLayer.Migrations
 
                     b.Property<string>("UniqueId")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("nvarchar(max)")
+                        .HasDefaultValue("e8b0fc1c-a828-4fa6-b27b-563c9b3de76bMultiShop");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
@@ -246,7 +248,7 @@ namespace BusinessLogicLayer.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Orders", (string)null);
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("CoreLayer.Entities.Product", b =>
@@ -261,10 +263,14 @@ namespace BusinessLogicLayer.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
 
                     b.Property<int?>("ProductCaregoryId")
-                        .HasMaxLength(50)
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ProductColorId")
                         .HasColumnType("int");
 
                     b.Property<string>("ProductDescription")
@@ -278,11 +284,15 @@ namespace BusinessLogicLayer.Migrations
                     b.Property<double?>("ProductPrice")
                         .HasColumnType("float");
 
+                    b.Property<string>("productSize")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("ProductCaregoryId");
 
-                    b.ToTable("Products", (string)null);
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("CoreLayer.Entities.User", b =>
@@ -323,7 +333,7 @@ namespace BusinessLogicLayer.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users", (string)null);
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

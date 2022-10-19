@@ -484,7 +484,7 @@
                 <!-- Content -->
 
                 <div class="container-xxl flex-grow-1 container-p-y">
-                    <h4 class="fw-bold py-3 mb-4">Products Table</h4>
+                    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Tables /</span> Basic Tables</h4>
 
                     @*              <!-- Basic Bootstrap Table -->
                         <div class="card">
@@ -3814,17 +3814,15 @@
                                         <th>id</th>
                                         <th>#</th>
                                         <th>Actions</th>
-                                        <th>Name</th>
-                                        <th>tPrice</th>
+                                        <th>ProductName</th>
+                                        <th>ProductPrice</th>
                                         <th>Image</th>
-                                        <th>Category</th>
-                                        <th>color</th>
+                                        <th>productCategory</th>
                                         <th>IsActive</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                              @if(Model != null)
-                              {var i = 1;
+                                            @{var i = 1;}
                                     @foreach (var item in Model)
                                     {
                                        
@@ -3848,19 +3846,12 @@
                                             <td>
                                                 <img src="~/img/@item.ImgName" width="50" height="50">
                                             </td>
-                                           <td>@item.ProductCaregory.CategoryName</td>
-                                          @*  <td><select>
-                                                @foreach (var color in item.Colors)
-                                                {
-                                                <option> @color.ColorName</option>
-                                                    
-                                                }
-                                            </select> </td>*@
+                                            <td>@item.ProductCaregory.CategoryName</td>
                                       
                                             <td class="ps-2 pe-2 pt-1 pb-1 fw-bold   @(@item.IsActive?"text-success":"text-danger") ">@item.IsActive</td>
                                             
                                         </tr>
-                                    }}
+                                    }
                                 </tbody>
 
 

@@ -14,7 +14,6 @@ namespace CoreLayer
        
         IProductsRepo Products { get; }
         ICategoryRepo Categories { get; }
-        IColorRepo Colors { get; }
         int Complete();
        
     }

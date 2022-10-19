@@ -9,6 +9,6 @@ namespace CoreLayer.Interfaces
 {
     public interface ICategoryRepo:IGenericRepository<Category>
     {
-        
+        IEnumerable<Category> GetAllCategoreis();
     }
 }
