@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "TgypdZevnArjycwJBM9oABA9ka2Go5X0R65zIpwPxs8=",
+  "Hash": "wHlE+VdE8rKAWxGJ33xBQPCsXLeEt3JzyKPRyGzBfq4=",
   "Source": "MVC_Layer",
   "BasePath": "_content/MVC_Layer",
   "Mode": "Default",
@@ -1581,6 +1581,23 @@
       "OriginalItemSpec": "wwwroot\\img\\07a6568a-37e8-4dae-a968-39b82a1b6abcpexels-aman-jakhar-1124468.jpg"
     },
     {
+      "Identity": "C:\\Users\\TOSHIBA\\Downloads\\Documents\\My1stE_CommerceSite\\MVC_Layer\\wwwroot\\img\\0dbfce1e-2c57-44bb-bcdd-34963a2fb98dpexels-dom-j-45981.jpg",
+      "SourceId": "MVC_Layer",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\TOSHIBA\\Downloads\\Documents\\My1stE_CommerceSite\\MVC_Layer\\wwwroot\\",
+      "BasePath": "_content/MVC_Layer",
+      "RelativePath": "img/0dbfce1e-2c57-44bb-bcdd-34963a2fb98dpexels-dom-j-45981.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\0dbfce1e-2c57-44bb-bcdd-34963a2fb98dpexels-dom-j-45981.jpg"
+    },
+    {
       "Identity": "C:\\Users\\TOSHIBA\\Downloads\\Documents\\My1stE_CommerceSite\\MVC_Layer\\wwwroot\\img\\142ccb8b-92e8-4fa9-99f1-b2833dfbf726pexels-ksenia-chernaya-3951783.jpg",
       "SourceId": "MVC_Layer",
       "SourceType": "Discovered",
@@ -1664,6 +1681,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\3e8b60a9-d644-4d12-891c-7c740d900a36pexels-camargo-anthony-1194471.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\TOSHIBA\\Downloads\\Documents\\My1stE_CommerceSite\\MVC_Layer\\wwwroot\\img\\4a6028f4-e194-4e58-92a6-9d83fc71416bpexels-dom-j-45981.jpg",
+      "SourceId": "MVC_Layer",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\TOSHIBA\\Downloads\\Documents\\My1stE_CommerceSite\\MVC_Layer\\wwwroot\\",
+      "BasePath": "_content/MVC_Layer",
+      "RelativePath": "img/4a6028f4-e194-4e58-92a6-9d83fc71416bpexels-dom-j-45981.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\4a6028f4-e194-4e58-92a6-9d83fc71416bpexels-dom-j-45981.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\TOSHIBA\\Downloads\\Documents\\My1stE_CommerceSite\\MVC_Layer\\wwwroot\\img\\5388ef24-8b1d-41cf-97a1-a26b3564603cpexels-aman-jakhar-1124468.jpg",
+      "SourceId": "MVC_Layer",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\TOSHIBA\\Downloads\\Documents\\My1stE_CommerceSite\\MVC_Layer\\wwwroot\\",
+      "BasePath": "_content/MVC_Layer",
+      "RelativePath": "img/5388ef24-8b1d-41cf-97a1-a26b3564603cpexels-aman-jakhar-1124468.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\5388ef24-8b1d-41cf-97a1-a26b3564603cpexels-aman-jakhar-1124468.jpg"
     },
     {
       "Identity": "C:\\Users\\TOSHIBA\\Downloads\\Documents\\My1stE_CommerceSite\\MVC_Layer\\wwwroot\\img\\67d538db-bea6-405c-a9cf-0f05144cd68calicia-petresc-BciCcl8tjVU-unsplash.jpg",
@@ -1870,6 +1921,23 @@
       "OriginalItemSpec": "wwwroot\\img\\9909b483-2af0-4a5c-ae87-ba0c97024044pexels-athena-2081199.jpg"
     },
     {
+      "Identity": "C:\\Users\\TOSHIBA\\Downloads\\Documents\\My1stE_CommerceSite\\MVC_Layer\\wwwroot\\img\\99fe00a4-9648-40bc-a41a-59a4a38b539bmoncell-allen-WueWzY3eL9U-unsplash.jpg",
+      "SourceId": "MVC_Layer",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\TOSHIBA\\Downloads\\Documents\\My1stE_CommerceSite\\MVC_Layer\\wwwroot\\",
+      "BasePath": "_content/MVC_Layer",
+      "RelativePath": "img/99fe00a4-9648-40bc-a41a-59a4a38b539bmoncell-allen-WueWzY3eL9U-unsplash.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\99fe00a4-9648-40bc-a41a-59a4a38b539bmoncell-allen-WueWzY3eL9U-unsplash.jpg"
+    },
+    {
       "Identity": "C:\\Users\\TOSHIBA\\Downloads\\Documents\\My1stE_CommerceSite\\MVC_Layer\\wwwroot\\img\\9d501f2e-cf29-4441-97a6-588fd0f2ee89jane-sundried-7_fTutm8umE-unsplash.jpg",
       "SourceId": "MVC_Layer",
       "SourceType": "Discovered",
@@ -1970,6 +2038,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\c02859cd-6311-41f2-be04-7f2b99111c62pexels-andrea-piacquadio-845457.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\TOSHIBA\\Downloads\\Documents\\My1stE_CommerceSite\\MVC_Layer\\wwwroot\\img\\c878b66f-e335-42fa-8873-a5e9740c2d3fmilada-vigerova-p8Drpg_duLw-unsplash.jpg",
+      "SourceId": "MVC_Layer",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\TOSHIBA\\Downloads\\Documents\\My1stE_CommerceSite\\MVC_Layer\\wwwroot\\",
+      "BasePath": "_content/MVC_Layer",
+      "RelativePath": "img/c878b66f-e335-42fa-8873-a5e9740c2d3fmilada-vigerova-p8Drpg_duLw-unsplash.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\c878b66f-e335-42fa-8873-a5e9740c2d3fmilada-vigerova-p8Drpg_duLw-unsplash.jpg"
     },
     {
       "Identity": "C:\\Users\\TOSHIBA\\Downloads\\Documents\\My1stE_CommerceSite\\MVC_Layer\\wwwroot\\img\\carousel-1.jpg",
@@ -2125,6 +2210,23 @@
       "OriginalItemSpec": "wwwroot\\img\\d18f39db-5a35-45a0-b5bb-60e0107d0397pexels-antony-trivet-12890922.jpg"
     },
     {
+      "Identity": "C:\\Users\\TOSHIBA\\Downloads\\Documents\\My1stE_CommerceSite\\MVC_Layer\\wwwroot\\img\\d6b9be15-21b9-4d23-aa6b-25cb7f05a87bpexels-dom-j-45981.jpg",
+      "SourceId": "MVC_Layer",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\TOSHIBA\\Downloads\\Documents\\My1stE_CommerceSite\\MVC_Layer\\wwwroot\\",
+      "BasePath": "_content/MVC_Layer",
+      "RelativePath": "img/d6b9be15-21b9-4d23-aa6b-25cb7f05a87bpexels-dom-j-45981.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\d6b9be15-21b9-4d23-aa6b-25cb7f05a87bpexels-dom-j-45981.jpg"
+    },
+    {
       "Identity": "C:\\Users\\TOSHIBA\\Downloads\\Documents\\My1stE_CommerceSite\\MVC_Layer\\wwwroot\\img\\d9cb788c-a0b3-47b9-a762-8dd8351b07acpexels-andrea-piacquadio-972937.jpg",
       "SourceId": "MVC_Layer",
       "SourceType": "Discovered",
@@ -2140,6 +2242,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\d9cb788c-a0b3-47b9-a762-8dd8351b07acpexels-andrea-piacquadio-972937.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\TOSHIBA\\Downloads\\Documents\\My1stE_CommerceSite\\MVC_Layer\\wwwroot\\img\\dcdf2a47-5c8b-4867-be34-4f08e242439apexels-apostolos-vamvouras-2285500.jpg",
+      "SourceId": "MVC_Layer",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\TOSHIBA\\Downloads\\Documents\\My1stE_CommerceSite\\MVC_Layer\\wwwroot\\",
+      "BasePath": "_content/MVC_Layer",
+      "RelativePath": "img/dcdf2a47-5c8b-4867-be34-4f08e242439apexels-apostolos-vamvouras-2285500.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\dcdf2a47-5c8b-4867-be34-4f08e242439apexels-apostolos-vamvouras-2285500.jpg"
     },
     {
       "Identity": "C:\\Users\\TOSHIBA\\Downloads\\Documents\\My1stE_CommerceSite\\MVC_Layer\\wwwroot\\img\\e0f740ef-100f-4fba-9743-1a40ae3ad179pexels-антон-леонардович-варфоломеев-6146039.jpg",

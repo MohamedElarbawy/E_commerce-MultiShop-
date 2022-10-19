@@ -116,5 +116,20 @@ namespace BusinessLogicLayer.Repositories
             }
             return productsList;
         }
+
+        public void Edit(Product newProduct, Product oldProduct)
+        {
+            oldProduct.ProductName = newProduct.ProductName;
+            oldProduct.ProductPrice = newProduct.ProductPrice;
+            oldProduct.IsActive = newProduct.IsActive;
+            oldProduct.ProductCaregoryId = newProduct.ProductCaregoryId;
+            oldProduct.ProductDescription = newProduct.ProductDescription;
+        }
+
+        public Product GetByIdWithColors(int id)
+        {
+           return context.Products.Where(p=>p.Id == id).Include(p=>p.Colors).FirstOrDefault();
+          
+        }
     }
 }

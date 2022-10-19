@@ -16,6 +16,8 @@ namespace CoreLayer.Interfaces
         IEnumerable<Product> FilterProductsByPrice(string priceRange);
         IEnumerable<Product> FilterProductsByColor(string colors);
         IEnumerable<Product> GetLastAddedProducts(int NumberOfProducts);
+        public Product GetByIdWithColors(int id);
+        void Edit(Product newProduct, Product oldProduct);
         void ChangeActiveStateToFalse(int id);
         void ChangeActiveStateToTrue(int id);
         IEnumerable<Product> GetAllProductsWithIds(List<int> ids);

@@ -1,5 +1,6 @@
 ﻿using BusinessLogicLayer.Helper;
 using CoreLayer;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +23,7 @@ namespace BusinessLogicLayer
         }
         public T GetById(int id)
         {
-            var entity= _context.Set<T>().Find(id);
+            var entity = _context.Set<T>().Find(id);
             return entity;
         }
         public T Add(T entity)
@@ -40,21 +41,21 @@ namespace BusinessLogicLayer
 
         }
 
-        public T Update(T entity)
+        public void Update(T entity)
         {
             _context.Set<T>().Update(entity);
-                return entity;
+           
         }
 
         //pagination
-        public IEnumerable<T> GetItemsPerPage(int pageNumber, int pageSize,IEnumerable<T> totalItems)
+        public IEnumerable<T> GetItemsPerPage(int pageNumber, int pageSize, IEnumerable<T> totalItems)
         {
-            if(pageNumber<1)
+            if (pageNumber < 1)
                 pageNumber = 1;
-            if(pageSize<1)
+            if (pageSize < 1)
                 pageSize = 10;
-           
-            
+
+
             return totalItems.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
         }
 

@@ -39,7 +39,7 @@ namespace MVC_Layer.Controllers.AdminControllers
 
         public IActionResult Details(int id)
         {
-          var product=  unitOfWork.Products.GetById(id);
+            var product = unitOfWork.Products.GetById(id);
             return View(product);
         }
 
@@ -61,28 +61,28 @@ namespace MVC_Layer.Controllers.AdminControllers
                 Value = c.Id.ToString()
 
             }).ToList();
-            
+
             List<SelectListItem> colorList = unitOfWork.Colors.GetAll().Select(c => new SelectListItem
             {
                 Text = c.ColorName,
                 Value = c.Id.ToString()
 
             }).ToList();
-           
-            ViewBag.categories=categoryList;
+
+            ViewBag.categories = categoryList;
             ViewBag.colors = colorList;
             return View();
         }
 
         [HttpPost]
-        public IActionResult AddProduct(Product entity,List<int> colorIds)
+        public IActionResult AddProduct(Product entity, List<int> colorIds)
         {
             if (!ModelState.IsValid)
                 return View(entity);
 
-            var colors=unitOfWork.Colors.GetColors(colorIds);
-            entity.Colors= (ICollection<Color>)colors;
-            unitOfWork.Products.Add(entity);           
+            var colors = unitOfWork.Colors.GetColors(colorIds);
+            entity.Colors = (ICollection<Color>)colors;
+            unitOfWork.Products.Add(entity);
             entity.ImgName = UploadFile.SaveFile(entity.ImgUrl, "img");
             unitOfWork.Complete();
             return RedirectToAction("Index");
@@ -90,6 +90,21 @@ namespace MVC_Layer.Controllers.AdminControllers
 
         public IActionResult Edit(int id)
         {
+            List<SelectListItem> categoryList = unitOfWork.Categories.GetAll().Select(c => new SelectListItem
+            {
+                Text = c.CategoryName,
+                Value = c.Id.ToString()
+
+            }).ToList();
+            ViewBag.categories = categoryList;
+            List<SelectListItem> colorList = unitOfWork.Colors.GetAll().Select(c => new SelectListItem
+            {
+                Text = c.ColorName,
+                Value = c.Id.ToString()
+
+            }).ToList();
+            ViewBag.colors = colorList;
+
             var product = unitOfWork.Products.GetById(id);
             return View(product);
 
@@ -97,12 +112,27 @@ namespace MVC_Layer.Controllers.AdminControllers
 
 
         [HttpPost]
-        public IActionResult ConfirmEdit(Product entity)
+        public IActionResult ConfirmEdit(Product entity, List<int> colorIds)
         {
-            unitOfWork.Products.Update(entity);
+            if (!ModelState.IsValid)
+                return View(entity);
+             var product = unitOfWork.Products.GetByIdWithColors(entity.Id);
+            if (colorIds.Any())
+            {
+                var colors = unitOfWork.Colors.GetColors(colorIds);
+               
+                product.Colors = (ICollection<Color>)colors;
+            }
+            if(entity.ImgUrl!=null)
+            product.ImgName = UploadFile.SaveFile(entity.ImgUrl, "img");
+
+            unitOfWork.Products.Edit(entity, product);
             unitOfWork.Complete();
             return RedirectToAction("Index");
         }
+
+
+
         [HttpPost]
         public IActionResult Delete(int id)
         {

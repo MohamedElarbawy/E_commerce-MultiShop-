@@ -11,7 +11,7 @@
         <form asp-action="ConfirmEdit" asp-controller="Admin" method="post" enctype="multipart/form-data">
                  <div class="mb-3">
                 <label class="form-label">Id</label>
-                <input type="text" disabled class="form-control"  asp-for="Id">
+                <input type="number" hidden class="form-control"  asp-for="Id">
             </div>
             <div class="mb-3">
                 <label class="form-label">product Name</label>
@@ -21,7 +21,21 @@
                 <label class="form-label">Price</label>
                 <input type="number" class="form-control"  asp-for="ProductPrice">
             </div>
-         
+          <div class="mb-3">
+                <label class="form-label">Category</label>
+
+                <select class="form-select" asp-items="ViewBag.categories" asp-for="ProductCaregoryId">
+                    <option selected >@Model.ProductCaregory.CategoryName</option>
+                </select>
+                <button class="btn btn-outline-primary" type="button">Button</button>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Colors</label>
+                <select class="form-select" asp-items="ViewBag.colors"  name="colorIds" multiple>           
+                </select>
+                <button class="btn btn-outline-primary" type="button">Button</button>
+            </div>
 
             <div class="mb-3">
                 <input class="form-check-input" type="checkbox"  asp-for="IsActive" >
