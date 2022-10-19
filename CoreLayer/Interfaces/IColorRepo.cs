@@ -9,5 +9,7 @@ namespace CoreLayer.Interfaces
 {
     public interface IColorRepo:IGenericRepository<Color>
     {
+
+        public IEnumerable<Color> GetColors(List<int> ids);
     }
 }

@@ -70,14 +70,19 @@ namespace MVC_Layer.Controllers.AdminControllers
             }).ToList();
            
             ViewBag.categories=categoryList;
-            ViewBag.categories= colorList;
+            ViewBag.colors = colorList;
             return View();
         }
 
         [HttpPost]
-        public IActionResult AddProduct(Product entity)
+        public IActionResult AddProduct(Product entity,List<int> colorIds)
         {
-            unitOfWork.Products.Add(entity);
+            if (!ModelState.IsValid)
+                return View(entity);
+
+            var colors=unitOfWork.Colors.GetColors(colorIds);
+            entity.Colors= (ICollection<Color>)colors;
+            unitOfWork.Products.Add(entity);           
             entity.ImgName = UploadFile.SaveFile(entity.ImgUrl, "img");
             unitOfWork.Complete();
             return RedirectToAction("Index");

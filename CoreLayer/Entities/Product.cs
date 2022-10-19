@@ -27,7 +27,7 @@ namespace CoreLayer.Entities
         [StringLength(2000)]
         public string? ProductDescription { get; set; }
       
-        public int? ProductColorId { get; set; }
+        
         public int? ProductCaregoryId { get; set; }
         [NotMapped]
         public IFormFile ImgUrl { get; set; }
