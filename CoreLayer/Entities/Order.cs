@@ -25,7 +25,7 @@ namespace CoreLayer.Entities
        
         [ForeignKey("UserId")]
         [InverseProperty("Orders")]
-        public virtual User OrderUser { get; set; }
+        public virtual UserData OrderUser { get; set; }
         [InverseProperty("CartItemOrder")]
         public virtual ICollection<CartItem> CartItems { get; set; }
 

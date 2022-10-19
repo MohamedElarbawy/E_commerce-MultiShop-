@@ -1,3 +1,12 @@
+C:\Users\TOSHIBA\Downloads\Documents\My1stE_CommerceSite\MVC_Layer\obj\Debug\net6.0\MVC_Layer.csproj.AssemblyReference.cache
+C:\Users\TOSHIBA\Downloads\Documents\My1stE_CommerceSite\MVC_Layer\obj\Debug\net6.0\MVC_Layer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\TOSHIBA\Downloads\Documents\My1stE_CommerceSite\MVC_Layer\obj\Debug\net6.0\MVC_Layer.AssemblyInfoInputs.cache
+C:\Users\TOSHIBA\Downloads\Documents\My1stE_CommerceSite\MVC_Layer\obj\Debug\net6.0\MVC_Layer.AssemblyInfo.cs
+C:\Users\TOSHIBA\Downloads\Documents\My1stE_CommerceSite\MVC_Layer\obj\Debug\net6.0\MVC_Layer.csproj.CoreCompileInputs.cache
+C:\Users\TOSHIBA\Downloads\Documents\My1stE_CommerceSite\MVC_Layer\obj\Debug\net6.0\MVC_Layer.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\TOSHIBA\Downloads\Documents\My1stE_CommerceSite\MVC_Layer\obj\Debug\net6.0\MVC_Layer.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\TOSHIBA\Downloads\Documents\My1stE_CommerceSite\MVC_Layer\obj\Debug\net6.0\MVC_Layer.RazorAssemblyInfo.cache
+C:\Users\TOSHIBA\Downloads\Documents\My1stE_CommerceSite\MVC_Layer\obj\Debug\net6.0\MVC_Layer.RazorAssemblyInfo.cs
 C:\Users\TOSHIBA\Downloads\Documents\My1stE_CommerceSite\MVC_Layer\bin\Debug\net6.0\appsettings.Development.json
 C:\Users\TOSHIBA\Downloads\Documents\My1stE_CommerceSite\MVC_Layer\bin\Debug\net6.0\appsettings.json
 C:\Users\TOSHIBA\Downloads\Documents\My1stE_CommerceSite\MVC_Layer\bin\Debug\net6.0\libman.json
@@ -43,6 +52,7 @@ C:\Users\TOSHIBA\Downloads\Documents\My1stE_CommerceSite\MVC_Layer\bin\Debug\net
 C:\Users\TOSHIBA\Downloads\Documents\My1stE_CommerceSite\MVC_Layer\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
 C:\Users\TOSHIBA\Downloads\Documents\My1stE_CommerceSite\MVC_Layer\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.SqlServer.dll
 C:\Users\TOSHIBA\Downloads\Documents\My1stE_CommerceSite\MVC_Layer\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\TOSHIBA\Downloads\Documents\My1stE_CommerceSite\MVC_Layer\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.dll
 C:\Users\TOSHIBA\Downloads\Documents\My1stE_CommerceSite\MVC_Layer\bin\Debug\net6.0\Microsoft.Extensions.Identity.Core.dll
 C:\Users\TOSHIBA\Downloads\Documents\My1stE_CommerceSite\MVC_Layer\bin\Debug\net6.0\Microsoft.Extensions.Identity.Stores.dll
 C:\Users\TOSHIBA\Downloads\Documents\My1stE_CommerceSite\MVC_Layer\bin\Debug\net6.0\Microsoft.Identity.Client.dll
@@ -259,15 +269,6 @@ C:\Users\TOSHIBA\Downloads\Documents\My1stE_CommerceSite\MVC_Layer\bin\Debug\net
 C:\Users\TOSHIBA\Downloads\Documents\My1stE_CommerceSite\MVC_Layer\bin\Debug\net6.0\CoreLayer.dll
 C:\Users\TOSHIBA\Downloads\Documents\My1stE_CommerceSite\MVC_Layer\bin\Debug\net6.0\CoreLayer.pdb
 C:\Users\TOSHIBA\Downloads\Documents\My1stE_CommerceSite\MVC_Layer\bin\Debug\net6.0\BusinessLogicLayer.pdb
-C:\Users\TOSHIBA\Downloads\Documents\My1stE_CommerceSite\MVC_Layer\obj\Debug\net6.0\MVC_Layer.csproj.AssemblyReference.cache
-C:\Users\TOSHIBA\Downloads\Documents\My1stE_CommerceSite\MVC_Layer\obj\Debug\net6.0\MVC_Layer.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\TOSHIBA\Downloads\Documents\My1stE_CommerceSite\MVC_Layer\obj\Debug\net6.0\MVC_Layer.AssemblyInfoInputs.cache
-C:\Users\TOSHIBA\Downloads\Documents\My1stE_CommerceSite\MVC_Layer\obj\Debug\net6.0\MVC_Layer.AssemblyInfo.cs
-C:\Users\TOSHIBA\Downloads\Documents\My1stE_CommerceSite\MVC_Layer\obj\Debug\net6.0\MVC_Layer.csproj.CoreCompileInputs.cache
-C:\Users\TOSHIBA\Downloads\Documents\My1stE_CommerceSite\MVC_Layer\obj\Debug\net6.0\MVC_Layer.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\TOSHIBA\Downloads\Documents\My1stE_CommerceSite\MVC_Layer\obj\Debug\net6.0\MVC_Layer.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\TOSHIBA\Downloads\Documents\My1stE_CommerceSite\MVC_Layer\obj\Debug\net6.0\MVC_Layer.RazorAssemblyInfo.cache
-C:\Users\TOSHIBA\Downloads\Documents\My1stE_CommerceSite\MVC_Layer\obj\Debug\net6.0\MVC_Layer.RazorAssemblyInfo.cs
 C:\Users\TOSHIBA\Downloads\Documents\My1stE_CommerceSite\MVC_Layer\obj\Debug\net6.0\staticwebassets.build.json
 C:\Users\TOSHIBA\Downloads\Documents\My1stE_CommerceSite\MVC_Layer\obj\Debug\net6.0\staticwebassets.development.json
 C:\Users\TOSHIBA\Downloads\Documents\My1stE_CommerceSite\MVC_Layer\obj\Debug\net6.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css

@@ -18,12 +18,15 @@ namespace BusinessLogicLayer
         public IProductsRepo Products { get; private set; }
 
         public ICategoryRepo Categories {get; private set; }
+        public IColorRepo Colors { get; private set; }
 
         public UnitOfWork(MultiShopContext context)
         {
-            this._context = context;
+            _context = context;
             Products = new ProductsRepo(_context);
             Categories = new CategoryRepo(_context);
+            Colors = new ColorRepo(_context);
+           
            
         }
 
