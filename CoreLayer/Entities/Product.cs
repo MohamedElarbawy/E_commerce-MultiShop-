@@ -18,16 +18,15 @@ namespace CoreLayer.Entities
 
 
         [Key]
-        public int? Id { get; set; }
-        //[Required]
+        public int Id { get; set; }
+      
         [StringLength(100)]
         public string? ProductName { get; set; }
         public double? ProductPrice { get; set; }
-        //[Required]
-        [StringLength(1000)]
+       
+        [StringLength(2000)]
         public string? ProductDescription { get; set; }
-        [StringLength(50)]
-        public string? productSize { get; set; }
+      
         public int? ProductColorId { get; set; }
         public int? ProductCaregoryId { get; set; }
         [NotMapped]

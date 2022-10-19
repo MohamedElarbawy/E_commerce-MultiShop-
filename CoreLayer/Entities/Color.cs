@@ -18,7 +18,7 @@ namespace CoreLayer.Entities
 
         
         public int Id { get; set; }
-        //[Required]
+        
         [StringLength(100)]
         public string ColorName { get; set; }
 

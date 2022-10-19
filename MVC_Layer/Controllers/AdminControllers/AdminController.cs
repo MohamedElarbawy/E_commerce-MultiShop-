@@ -4,6 +4,7 @@ using CoreLayer.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using MVC_Layer.Models;
 
 namespace MVC_Layer.Controllers.AdminControllers
@@ -54,7 +55,22 @@ namespace MVC_Layer.Controllers.AdminControllers
         [HttpGet]
         public IActionResult AddProduct()
         {
+            List<SelectListItem> categoryList = unitOfWork.Categories.GetAll().Select(c => new SelectListItem
+            {
+                Text = c.CategoryName,
+                Value = c.Id.ToString()
 
+            }).ToList();
+            
+            List<SelectListItem> colorList = unitOfWork.Colors.GetAll().Select(c => new SelectListItem
+            {
+                Text = c.ColorName,
+                Value = c.Id.ToString()
+
+            }).ToList();
+           
+            ViewBag.categories=categoryList;
+            ViewBag.categories= colorList;
             return View();
         }
 

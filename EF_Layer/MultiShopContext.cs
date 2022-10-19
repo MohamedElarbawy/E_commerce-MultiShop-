@@ -22,7 +22,7 @@ namespace BusinessLogicLayer
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<Discount> Discounts{ get; set; }
         public virtual DbSet<CartItem> CartItems{ get; set; }
-        public virtual DbSet<User> Users{ get; set; }
+        public virtual DbSet<UserData> UsersData{ get; set; }
         public virtual DbSet<Order> Orders{ get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -46,13 +46,8 @@ namespace BusinessLogicLayer
                  
             });
 
-            modelBuilder.Entity<Order>()
-                .Property(o=>o.UniqueId)
-                .HasDefaultValue(Guid.NewGuid()+"MultiShop");
+     
            
-            modelBuilder.Entity<Product>()
-                .Property(p=>p.IsActive)
-                .HasDefaultValue(true);
             modelBuilder.Entity<Color>()
                 .HasData(new Color { Id=(int)ColorsIds.black, ColorName = "black" },
                          new Color { Id = (int)ColorsIds.white, ColorName = "white" },

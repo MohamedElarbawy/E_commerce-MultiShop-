@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace CoreLayer.Entities
 {
-    public class User
+    public class UserData
     {
-        public User()
+        public UserData()
         {
             Orders= new HashSet<Order>();
         }
