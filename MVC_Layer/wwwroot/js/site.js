@@ -241,3 +241,16 @@ $('.quantity button').on('click', function () {
 //        $("#div1").load("/Some/ShopAjax", { query: "300-700" });
 //    });
 //});
+
+
+
+
+
+
+
+
+
+
+
+
+

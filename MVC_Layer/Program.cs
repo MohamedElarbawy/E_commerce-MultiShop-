@@ -14,8 +14,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-//builder.Services.AddScoped<IProductsRepo, ProductsRepo>();
-//builder.Services.AddScoped<ICategoryRepo, CategoryRepo>();
+
 builder.Services.AddAutoMapper(x => x.AddProfile(new DomainProfile()));
   
 builder.Services.AddDbContext<MultiShopContext>(options =>

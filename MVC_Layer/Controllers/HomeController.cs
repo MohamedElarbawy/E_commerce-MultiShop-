@@ -58,36 +58,6 @@ namespace MVC_Layer.Controllers
             return View(products);
         }
 
-        public IActionResult ShopAjax(int pageSize, int pageNumber)
-        {
-            //int totalItems = unitOfWork.Products.NumberOfItems();
-
-            var priceRange = HttpContext.Request.Query["price"];
-            var colors = HttpContext.Request.Query["color"];
-            var totalProducts = unitOfWork.Products.FilterProductsByPrice(priceRange);
-           
-            //if (colors.Count > 0)
-            //    totalProducts = unitOfWork.Products.FilterProductsBycolor(colors);
-
-            var totalItems = totalProducts.Count();
-            var pager = new Pager(totalItems, pageNumber, pageSize);
-            ViewBag.Pager = pager;
-
-
-            var products = unitOfWork.Products.GetItemsPerPage(pageNumber, pageSize, totalProducts);
-
-            return View(products);
-        }
-
-
-
-
-        public JsonResult filter(string query)
-        {
-            var products = unitOfWork.Products.FilterProductsByPrice(query);          
-
-            return Json(products);
-        }
 
 
 
@@ -95,12 +65,5 @@ namespace MVC_Layer.Controllers
 
 
 
-
-
-        //[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        //public IActionResult Error()
-        //{
-        //    return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        //}
     }
 }
