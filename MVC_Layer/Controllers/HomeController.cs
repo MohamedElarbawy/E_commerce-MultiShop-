@@ -40,13 +40,13 @@ namespace MVC_Layer.Controllers
 
         public IActionResult Shop(int pageSize, int pageNumber)
         {
-            //int totalItems = unitOfWork.Products.NumberOfItems();
+            
 
             var priceRange = HttpContext.Request.Query["price"];
             var colors = HttpContext.Request.Query["color"];
             var totalProducts = unitOfWork.Products.FilterProductsByPrice(priceRange);
-            //if (colors.Count > 0)
-            //    totalProducts = unitOfWork.Products.FilterProductsBycolor(colors);
+            if (colors.Count > 0)
+                totalProducts = unitOfWork.Products.FilterProductsByColor(colors);
 
             var totalItems = totalProducts.Count();
             var pager = new Pager(totalItems, pageNumber, pageSize);

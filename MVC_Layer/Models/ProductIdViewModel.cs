@@ -3,6 +3,7 @@
     public class ProductIdViewModel
     {
 
-        public string? productId { get; set; }
+        public string? id { get; set; }
+        public int count { get; set; }
     }
 }

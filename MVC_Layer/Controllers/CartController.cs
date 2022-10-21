@@ -12,7 +12,6 @@ namespace MVC_Layer.Controllers
             this.unitOfWork = unitOfWork;
         }
 
-        List<int> _items = new List<int>();
         private readonly IUnitOfWork unitOfWork;
 
         //[HttpPost]
@@ -26,16 +25,42 @@ namespace MVC_Layer.Controllers
         //        _items.Add(int.Parse(item.productId));
         //    }
 
-            
+
 
         //}
 
         public IActionResult Cart()
-        {
-            
-            var products = unitOfWork.Products.GetAllProductsWithIds(_items);
-            return View(products);
+        {            
+            return View();
         }
+
+
+        public JsonResult getTotalPrice(string localStorageItems)
+        {
+              List<int> productsIds = new();
+            Dictionary<int, int> productIdAndCount = new();
+            ProductIdViewModel[]? ObjectsFromJason = JsonSerializer.Deserialize<ProductIdViewModel[]>(localStorageItems);
+            if (ObjectsFromJason != null&& ObjectsFromJason.Length >0)
+                foreach (var item in ObjectsFromJason)
+                {
+                    if(item.id!=null && item.count !=0)
+                    productIdAndCount.Add(int.Parse(item.id), item.count);
+                 
+                }
+            productsIds = productIdAndCount.Keys.ToList();
+              var products = unitOfWork.Products.GetAllProductsWithIds(productsIds);
+            double? totalPrice = 0;
+            foreach (var item in products)
+            {
+                if(item.ProductPrice != null)
+                totalPrice += productIdAndCount[item.Id]*item.ProductPrice;
+            }
+
+            return Json(totalPrice);
+        }
+
+
+
 
     }
 }

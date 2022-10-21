@@ -2,64 +2,79 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 // Write your JavaScript code.
-getNumberOfProductsInWishList();
-getNumberOfProductsInShoppingCart();
+$(document).ready(function () {
+
+    getNumberOfProductsInWishList();
+    getNumberOfProductsIncart();
+    appendProductsToCartBody();
+    getTotalPrice();
+});
 
 
 //localStorage.clear();
 
 
-var ShoppingCartProduct;
-var ShoppingCartProducts = [];
-var allIdsINShoppingCart = [];
+var cartProduct;
+var cartProducts = [];
+var allIdsINcart = [];
 function addToCart(product) {
-    ShoppingCartProduct = {
+    cartProduct = {
 
-     id : product.getAttribute("data-product-id"),
-     name : product.getAttribute("data-product-name"),
-     img   : product.getAttribute("data-product-img"),
-     price : product.getAttribute("data-product-price"),
-     color : product.getAttribute("data-product-color"),
-     colorId : product.getAttribute("data-product-colorId"),
-     count:1
+        id: product.getAttribute("data-product-id"),
+        name: product.getAttribute("data-product-name"),
+        img: product.getAttribute("data-product-img"),
+        price: product.getAttribute("data-product-price"),
+        color: product.getAttribute("data-product-color"),
+        colorId: product.getAttribute("data-product-colorId"),
+        count: 1,
+        totalPrice: product.getAttribute("data-product-price")
+        
     }
-    ShoppingCartProducts.push(ShoppingCartProduct);
+    cartProducts.push(cartProduct);
 
-    if (localStorage.getItem("shoppingCartProducts") === null || localStorage.getItem("shoppingCartProducts").length === 0) {
-        localStorage.setItem("shoppingCartProducts", JSON.stringify(ShoppingCartProducts));
-        getNumberOfProductsInShoppingCart();
+    if (localStorage.getItem("cartProducts") === null || localStorage.getItem("cartProducts").length === 0) {
+        localStorage.setItem("cartProducts", JSON.stringify(cartProducts));
+        getNumberOfProductsIncart();
 
     } else {
-        ShoppingCartProducts = JSON.parse(localStorage.getItem("shoppingCartProducts"));
-        for (let i = 0; i < ShoppingCartProducts.length; i++) {
-            allIdsINShoppingCart.push(ShoppingCartProducts[i].id);
+        cartProducts = JSON.parse(localStorage.getItem("cartProducts"));
+        for (let i = 0; i < cartProducts.length; i++) {
+            allIdsINcart.push(cartProducts[i].id);
         }
-        if (allIdsINShoppingCart.indexOf(ShoppingCartProduct.id) === -1) {
-            ShoppingCartProducts.push(ShoppingCartProduct);
-            localStorage.setItem("shoppingCartProducts", JSON.stringify(ShoppingCartProducts));
-            getNumberOfProductsInShoppingCart();
+        if (allIdsINcart.indexOf(cartProduct.id) === -1) {
+            cartProducts.push(cartProduct);
+            localStorage.setItem("cartProducts", JSON.stringify(cartProducts));
+            getNumberOfProductsIncart();
 
         } else {
-            console.log(ShoppingCartProducts);
-            Array.from(ShoppingCartProducts).filter(x=>x.id == ShoppingCartProduct.id)[0].count += 1;
-            console.log(ShoppingCartProducts);
-            localStorage.setItem("shoppingCartProducts", JSON.stringify(ShoppingCartProducts));
+
+            var selectedProduct = Array.from(cartProducts).filter(x => x.id == cartProduct.id)[0];
+            selectedProduct.count += 1;
+           selectedProduct.totalPrice = parseInt(selectedProduct.price) * selectedProduct.count;
+
+            console.log(cartProducts);
+            localStorage.setItem("cartProducts", JSON.stringify(cartProducts));
         }
 
     }
-    //console.log(JSON.parse(localStorage.getItem("shoppingCartProducts")))
+    //console.log(JSON.parse(localStorage.getItem("cartProducts")))
 
-   
+
 }
 
 
-function getNumberOfProductsInShoppingCart() {
+function getNumberOfProductsIncart() {
     let counterElement = document.getElementById("shoppingCart-counter");
-    var productsInshoppingCart = JSON.parse(localStorage.getItem("shoppingCartProducts"));
-    if (productsInshoppingCart == null) {
+    let counterElement2 = document.getElementById("cart-counter");
+
+    var productsIncart = JSON.parse(localStorage.getItem("cartProducts"));
+
+    if (productsIncart == null) {
         counterElement.innerHTML = 0;
+        counterElement2.innerHTML = 0;
     } else {
-        counterElement.innerHTML = productsInshoppingCart.length;
+        counterElement.innerHTML = productsIncart.length;
+        counterElement2.innerHTML = productsIncart.length;
     }
 }
 
@@ -67,51 +82,89 @@ function getNumberOfProductsInShoppingCart() {
 
 
 function appendProductsToCartBody() {
-    document.getElementById("cartBody").innerHTML ="<h3>Your selected products will appear here</h3>";
- var   localStorageProducts = JSON.parse(localStorage.getItem("shoppingCartProducts"));
+  
+    var localStorageProducts = JSON.parse(localStorage.getItem("cartProducts"));
     console.log(localStorageProducts);
-    console.log(typeof (localStorageProducts));
+   
     for (var i = 0; i < localStorageProducts.length; i++) {
         var product = localStorageProducts[i];
         document.getElementById("cartBody").innerHTML += `
- <tr>
-                            <td class="align-middle"><img src="/img/${product.img}" alt="" style="width: 50px;"> Product Name</td>
-                            <td class="align-middle">$150</td>
+                     <tr>
+                        <td class="align-middle"><img src="/img/${product.img}" alt="" style="width: 50px;"> ${product.name}</td>
+                            <td class="align-middle">$${product.price}</td>
                             <td class="align-middle">
                                 <div class="input-group quantity mx-auto" style="width: 100px;">
                                     <div class="input-group-btn">
-                                        <button class="btn btn-sm btn-primary btn-minus">
+                                        <button class="btn btn-sm btn-primary btn-minus" data-product-id="${product.id}" onclick="changeQuantity(this)">
                                         <i class="fa fa-minus"></i>
                                         </button>
                                     </div>
-                                    <input type="text" class="form-control form-control-sm bg-secondary border-0 text-center" value="1">
+                                    <input type="text" class="form-control form-control-sm bg-secondary border-0 text-center " value="${product.count}">
                                     <div class="input-group-btn">
-                                        <button class="btn btn-sm btn-primary btn-plus">
+                                        <button class="btn btn-sm btn-primary btn-plus" data-product-id="${product.id}" onclick="changeQuantity(this)">
                                             <i class="fa fa-plus"></i>
                                         </button>
                                     </div>
                                 </div>
                             </td>
-                            <td class="align-middle">$150</td>
-                            <td class="align-middle"><button data-product-id="${product.id}"  class="removeBtn btn btn-sm btn-danger"><i class="fa fa-times"></i></button></td>
-                        </tr>
-
-`
+                            <td class="align-middle totalPrice">$${product.totalPrice}</td>
+                            <td class="align-middle"><button data-product-id="${product.id}" onclick="deleteProductFromCart(this)" class="removeBtn btn btn-sm btn-danger"><i class="fa fa-times"></i></button></td>
+                        </tr>`
     }
 }
-appendProductsToCartBody();
 
-var localStorageProducts = JSON.parse(localStorage.getItem("shoppingCartProducts"));
-Array.from(document.querySelectorAll(".removeBtn")).forEach(x => x.onclick = function() {
+function deleteProductFromCart(product) {
+    var localStorageProducts = JSON.parse(localStorage.getItem("cartProducts"));
     //remove from ui
-    this.parentElement.parentElement.remove();
-    //remove from ls
-    var newLocalStorageProducts = localStorageProducts.filter(x => x.id != this.getAttribute("data-product-id"));
-    localStorage.setItem("shoppingCartProducts", JSON.stringify(newLocalStorageProducts));
-})
+    product.parentElement.parentElement.remove();
+    //remove from localStorage
+    var newLocalStorageProducts = localStorageProducts.filter(x => x.id != product.getAttribute("data-product-id"));
+    localStorage.setItem("cartProducts", JSON.stringify(newLocalStorageProducts));
+    getNumberOfProductsIncart();
+    getTotalPrice()
+};
 
 
-//wishList Start
+
+
+
+function changeQuantity(product) {
+      //  var oldValue = product.parentElement.parentElement.querySelector("input").value;
+    var localStorageProducts = JSON.parse(localStorage.getItem("cartProducts"));
+
+    var selectedProduct = Array.from(localStorageProducts).filter(x => x.id == product.getAttribute("data-product-id"))[0];
+    
+    if (product.classList.contains("btn-plus")) {
+       // var newVal = parseInt(oldValue) + 1;
+        selectedProduct.count += 1;
+    } else {
+        if (selectedProduct.count > 1) {
+          //  newVal = parseInt(oldValue) - 1;
+            selectedProduct.count -= 1;
+        } else {
+           // newVal = 1;
+            selectedProduct.count = 1;
+        }
+    }
+    selectedProduct.totalPrice = parseInt(selectedProduct.price) * selectedProduct.count;
+    product.parentElement.parentElement.querySelector("input").value = selectedProduct.count;
+    product.parentElement.parentElement.parentElement.parentElement.querySelector(".totalPrice").innerHTML = selectedProduct.totalPrice;
+    
+
+    var newLocalStorageProducts = localStorageProducts.filter(x => x.id != product.getAttribute("data-product-id"));
+    newLocalStorageProducts.push(selectedProduct);
+    localStorage.setItem("cartProducts", JSON.stringify(newLocalStorageProducts));
+    console.log(localStorageProducts);
+    getTotalPrice()
+};
+
+
+
+
+
+//end shopping cart--------------------------------------------------------
+
+//wishList Start ----------------------------------------------------------
 
 
 var wishListProduct;
@@ -120,7 +173,7 @@ var allIds = [];
 
 function addToWishLIst(product) {
     let id = product.getAttribute("data-product-id-wishlist");
-   
+
     wishListProduct = {
         productId: id,
     }
@@ -144,40 +197,26 @@ function addToWishLIst(product) {
 
 
     }
-        console.log(JSON.parse(localStorage.getItem("wishListProducts")))
+    console.log(JSON.parse(localStorage.getItem("wishListProducts")))
 }
 
 
 
 function getNumberOfProductsInWishList() {
     let counterElement = document.getElementById("wishlist-counter");
+    let counterElement2 = document.getElementById("wishlist_counter");
     var productsInWishList = JSON.parse(localStorage.getItem("wishListProducts"));
     if (productsInWishList == null) {
         counterElement.innerHTML = 0;
+        counterElement2.innerHTML = 0;
     } else {
         counterElement.innerHTML = productsInWishList.length;
+        counterElement2.innerHTML = productsInWishList.length;
     }
 }
+//wishList End -----------------------------------------------------------
 
-
-//wishList End
-function SendLocalStorage() {
-
-    let cartObjects = localStorage.getItem("shoppingCartProducts");
-
-    $.ajax({
-        type: "POST",
-        url: "/Cart/GetLocalStorage",
-        data: {items:cartObjects},
-        success: function (result) {
-            console.log(result)
-        }
-
-    });
-
-};
-
-//alert in admin page when delete
+//alert in admin page when delete start---------------------------------------------------
 
 function alert(id) {
     swal({
@@ -189,13 +228,13 @@ function alert(id) {
     })
         .then((willDelete) => {
             if (willDelete) {
-                confirmDelete(id);               
-            } 
-            
+                confirmDelete(id);
+            }
+
         });
 }
 
-function confirmDelete (productId){
+function confirmDelete(productId) {
     $.ajax({
         type: "post",
         url: "/Admin/delete",
@@ -208,49 +247,27 @@ function confirmDelete (productId){
 
 };
 
-//document.getElementsByClassName("fa-plus").onclick = function () {
+
+
+//alert in admin page when delete end---------------------------------------------
 
 
 
+function getTotalPrice() {
+    var items = localStorage.getItem("cartProducts");
+    $.ajax({
+        method: "GET",
+        url: "/cart/getTotalPrice",
+        data: { localStorageItems: items },
+        success: function (result) {
+            console.log(result);
+            document.getElementById("subtotal").innerHTML =`$${result}`
+            $(".subtotal").html = result;
+            console.log(document.getElementById("subtotal"))
+        },  error: function (xhr, status) {
+            console.log(xhr);
+            console.log(status);
 
-//}
-(function ($) {
-$('.quantity button').on('click', function () {
-    var button = $(this);
-    var oldValue = button.parent().parent().find('input').val();
-    if (button.hasClass('btn-plus')) {
-        var newVal = parseFloat(oldValue) + 1;
-    } else {
-        if (oldValue > 1) {
-            var newVal = parseFloat(oldValue) - 1;
-        } else {
-            newVal = 1;
         }
-    }
-    button.parent().parent().find('input').val(newVal);
-});
-    
-});
-
-
-
-
-
-//$(document).ready(function () {
-//    $("button").click(function () {
-//        $("#div1").load("/Some/ShopAjax", { query: "300-700" });
-//    });
-//});
-
-
-
-
-
-
-
-
-
-
-
-
-
+    })
+};

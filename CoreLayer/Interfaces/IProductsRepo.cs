@@ -14,6 +14,7 @@ namespace CoreLayer.Interfaces
         IEnumerable<Product> GetProductsInCAtegory(int id);
         //IEnumerable<Product> GetProductsPerPage(int pageNumber,int pageSize);
         IEnumerable<Product> FilterProductsByPrice(string priceRange);
+     
         IEnumerable<Product> FilterProductsByColor(string colorsIds);
         IEnumerable<Product> GetLastAddedProducts(int NumberOfProducts);
         public Product GetByIdWithColors(int id);
