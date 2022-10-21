@@ -129,6 +129,7 @@
                         </div>
                     </div>
                 </div>
+                @if(Model !=null){
                 @foreach (var item in Model)
                 {
 
@@ -142,15 +143,14 @@
                                           data-product-name   ="@item.ProductName"
                                           data-product-img    ="@item.ImgName"
                                           data-product-price  ="@item.ProductPrice"
-                                         @* data-product-color  ="@item.ProductColor?.Color"
-                                          data-product-colorId  ="@item.ProductColor?.Id"*@
+                                        
                                           onclick="addToCart(this)"><i class="fa fa-shopping-cart"></i></a>
                                     <a class="btn btn-outline-dark btn-square" data-product-id-wishlist="@item.Id" onclick="addToWishLIst(this)"><i class="far fa-heart"></i></a>
                                
                                 </div>
                             </div>
                             <div class="text-center py-4">
-                                <a class="h6 text-decoration-none text-truncate" href="">@item.ProductName</a>
+                                <a class="h6 text-decoration-none text-truncate" asp-action="ProductDetails" asp-controller="Home" asp-route-id=@item.Id>@item.ProductName</a>
                                 <div class="d-flex align-items-center justify-content-center mt-2">
                                     <h5>$@item.ProductPrice</h5>
                                 </div>
@@ -165,7 +165,7 @@
                             </div>
                         </div>
                     </div>
-                }
+                }}
 
                 <partial name="_Pagination" model="@ViewBag.Pager"  />
             

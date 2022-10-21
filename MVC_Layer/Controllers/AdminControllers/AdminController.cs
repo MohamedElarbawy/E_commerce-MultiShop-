@@ -24,7 +24,7 @@ namespace MVC_Layer.Controllers.AdminControllers
 
         public IActionResult Index(int pageSize, int pageNumber)
         {
-            var totalProducts = unitOfWork.Products.GetAllProductsWithCategory();
+            var totalProducts = unitOfWork.Products.GetProductsIncludeCategoryNColors();
 
             var totalItems = totalProducts.Count();
             ViewBag.TotalProducts = totalItems;

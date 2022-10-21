@@ -9,8 +9,10 @@ namespace CoreLayer.Interfaces
 {
     public interface IProductsRepo:IGenericRepository<Product>
     {
-        IEnumerable<Product> GetAllProductsWithCategory();
+        IEnumerable<Product> GetProductsIncludeCategoryNColors();
+        IEnumerable<Product> GetAllActiveProductsIncludecolors();
         IEnumerable<Product> GetAllActiveProducts();
+
         IEnumerable<Product> GetProductsInCAtegory(int id);
         //IEnumerable<Product> GetProductsPerPage(int pageNumber,int pageSize);
         IEnumerable<Product> FilterProductsByPrice(string priceRange);

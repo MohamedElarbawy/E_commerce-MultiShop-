@@ -19,13 +19,19 @@ namespace BusinessLogicLayer.Repositories
         }
 
 
-        public IEnumerable<Product> GetAllProductsWithCategory()
+        public IEnumerable<Product> GetProductsIncludeCategoryNColors()
         {
             return context.Products.Include(p=>p.ProductCaregory)
                                    .Include(p=>p.Colors)
                                    .ToList();
         }
 
+        public IEnumerable<Product> GetAllActiveProductsIncludecolors()
+        {
+            return context.Products.Where(p => p.IsActive)
+                                    .Include(p=>p.Colors)
+                                    .ToList();
+        }
         public IEnumerable<Product> GetAllActiveProducts()
         {
             return context.Products.Where(p => p.IsActive).ToList();

@@ -56,7 +56,7 @@ namespace BusinessLogicLayer
                          new Color { Id = (int)ColorsIds.blue, ColorName = "blue" },
                          new Color { Id = (int)ColorsIds.magenta, ColorName = "magent" },
                          new Color { Id = (int)ColorsIds.cyan, ColorName = "cyan" },
-                         new Color { Id = (int)ColorsIds.turquoise, ColorName = "turquo" },
+                         new Color { Id = (int)ColorsIds.turquoise, ColorName = "turquoise" },
                          new Color { Id = (int)ColorsIds.brown, ColorName = "brown" },
                          new Color { Id = (int)ColorsIds.grey, ColorName = "grey" },
                          new Color { Id = (int)ColorsIds.beige, ColorName = "beige" },

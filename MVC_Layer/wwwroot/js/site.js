@@ -17,18 +17,18 @@ $(document).ready(function () {
 var cartProduct;
 var cartProducts = [];
 var allIdsINcart = [];
-function addToCart(product) {
+function addToCart(product,chosenColor,chosenSize) {
     cartProduct = {
 
         id: product.getAttribute("data-product-id"),
         name: product.getAttribute("data-product-name"),
         img: product.getAttribute("data-product-img"),
         price: product.getAttribute("data-product-price"),
-        color: product.getAttribute("data-product-color"),
-        colorId: product.getAttribute("data-product-colorId"),
+        color: chosenColor,
+        size: chosenSize,
         count: 1,
         totalPrice: product.getAttribute("data-product-price")
-        
+
     }
     cartProducts.push(cartProduct);
 
@@ -50,7 +50,9 @@ function addToCart(product) {
 
             var selectedProduct = Array.from(cartProducts).filter(x => x.id == cartProduct.id)[0];
             selectedProduct.count += 1;
-           selectedProduct.totalPrice = parseInt(selectedProduct.price) * selectedProduct.count;
+            selectedProduct.color = cartProduct.color;
+            selectedProduct.size = cartProduct.size;
+            selectedProduct.totalPrice = parseInt(selectedProduct.price) * selectedProduct.count;
 
             console.log(cartProducts);
             localStorage.setItem("cartProducts", JSON.stringify(cartProducts));
@@ -61,6 +63,17 @@ function addToCart(product) {
 
 
 }
+
+function addToCartWithColorNSize(product){
+
+  var color= product.parentElement.previousElementSibling.querySelector(":checked").value
+    var size = product.parentElement.previousElementSibling.previousElementSibling.querySelector(":checked").value
+
+    addToCart(product, color, size);
+    location.href="/cart/cart"
+
+}
+
 
 
 function getNumberOfProductsIncart() {
@@ -82,17 +95,18 @@ function getNumberOfProductsIncart() {
 
 
 function appendProductsToCartBody() {
-  
+
     var localStorageProducts = JSON.parse(localStorage.getItem("cartProducts"));
     console.log(localStorageProducts);
-   
+
     for (var i = 0; i < localStorageProducts.length; i++) {
         var product = localStorageProducts[i];
         document.getElementById("cartBody").innerHTML += `
-                     <tr>
-                        <td class="align-middle"><img src="/img/${product.img}" alt="" style="width: 50px;"> ${product.name}</td>
-                            <td class="align-middle">$${product.price}</td>
-                            <td class="align-middle">
+                     <tr ${product.color !== undefined ?'style="border-left:solid;border-width:thick;border-left-color:'+product.color:''}">
+                        <td class="align-middle"><img src="/img/${product.img}" alt="" style="width: 50px;"></td>
+                            <td class="align-middle"><a href="/Home/ProductDetails/${product.id}">${product.name}</a></td>
+                            <td class="align-middle">${product.price}</td>
+                               <td class="align-middle">
                                 <div class="input-group quantity mx-auto" style="width: 100px;">
                                     <div class="input-group-btn">
                                         <button class="btn btn-sm btn-primary btn-minus" data-product-id="${product.id}" onclick="changeQuantity(this)">
@@ -129,27 +143,27 @@ function deleteProductFromCart(product) {
 
 
 function changeQuantity(product) {
-      //  var oldValue = product.parentElement.parentElement.querySelector("input").value;
+    //  var oldValue = product.parentElement.parentElement.querySelector("input").value;
     var localStorageProducts = JSON.parse(localStorage.getItem("cartProducts"));
 
     var selectedProduct = Array.from(localStorageProducts).filter(x => x.id == product.getAttribute("data-product-id"))[0];
-    
+
     if (product.classList.contains("btn-plus")) {
-       // var newVal = parseInt(oldValue) + 1;
+        // var newVal = parseInt(oldValue) + 1;
         selectedProduct.count += 1;
     } else {
         if (selectedProduct.count > 1) {
-          //  newVal = parseInt(oldValue) - 1;
+            //  newVal = parseInt(oldValue) - 1;
             selectedProduct.count -= 1;
         } else {
-           // newVal = 1;
+            // newVal = 1;
             selectedProduct.count = 1;
         }
     }
     selectedProduct.totalPrice = parseInt(selectedProduct.price) * selectedProduct.count;
     product.parentElement.parentElement.querySelector("input").value = selectedProduct.count;
     product.parentElement.parentElement.parentElement.parentElement.querySelector(".totalPrice").innerHTML = selectedProduct.totalPrice;
-    
+
 
     var newLocalStorageProducts = localStorageProducts.filter(x => x.id != product.getAttribute("data-product-id"));
     newLocalStorageProducts.push(selectedProduct);
@@ -253,18 +267,50 @@ function confirmDelete(productId) {
 
 
 
-function getTotalPrice() {
+function getTotalPrice(discount) {
     var items = localStorage.getItem("cartProducts");
     $.ajax({
         method: "GET",
         url: "/cart/getTotalPrice",
         data: { localStorageItems: items },
         success: function (result) {
-            console.log(result);
-            document.getElementById("subtotal").innerHTML =`$${result}`
-            $(".subtotal").html = result;
-            console.log(document.getElementById("subtotal"))
-        },  error: function (xhr, status) {
+
+            document.getElementById("subtotal").innerHTML = `$${result}`
+            if (discount != null) {
+                discount /= 100;
+                totalPriceAfterDiscount = result - (result * discount);
+                console.log(totalPriceAfterDiscount);
+                document.getElementById("totalPrice-discount").innerHTML = `$${totalPriceAfterDiscount}`;
+            } else
+                document.getElementById("totalPrice-discount").innerHTML = `$${result}`;
+
+
+        }, error: function (xhr, status) {
+            console.log(xhr);
+            console.log(status);
+
+        }
+    })
+};
+
+
+
+function getDiscount(button) {
+    var discountCode = button.parentElement.parentElement.querySelector("input").value;
+    $.ajax({
+        method: "GET",
+        url: "/cart/getDiscount",
+        data: { code: discountCode },
+        success: function (result) {
+            if (result > 0 && result < 100) {
+                document.getElementById("dicount").innerHTML = `${result}%`;
+                getTotalPrice(result);
+            } else {
+                document.getElementById("dicount").innerHTML = `$00.0`;
+                getTotalPrice();
+            }
+        },
+        error: function (xhr, status) {
             console.log(xhr);
             console.log(status);
 

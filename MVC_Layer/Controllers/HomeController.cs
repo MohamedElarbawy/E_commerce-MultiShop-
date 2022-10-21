@@ -21,14 +21,14 @@ namespace MVC_Layer.Controllers
         {
             ViewBag.categories = unitOfWork.Categories.GetAllCategoreis();
             ViewBag.recentProducts = unitOfWork.Products.GetLastAddedProducts(12);
-            var products = unitOfWork.Products.GetAllActiveProducts();
+            var products = unitOfWork.Products.GetAllActiveProductsIncludecolors();
 
             return View(products);
         }
 
         public IActionResult ProductDetails(int id)
         {
-            var product = unitOfWork.Products.GetById(id);
+            var product = unitOfWork.Products.GetByIdWithColors(id);
             return View(product);
         }
 
