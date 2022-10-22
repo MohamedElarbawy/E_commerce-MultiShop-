@@ -22,21 +22,6 @@ namespace BusinessLogicLayer.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("CartItemColor", b =>
-                {
-                    b.Property<int>("CartItemsId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ColorsId")
-                        .HasColumnType("int");
-
-                    b.HasKey("CartItemsId", "ColorsId");
-
-                    b.HasIndex("ColorsId");
-
-                    b.ToTable("CartItemColor");
-                });
-
             modelBuilder.Entity("ColorProduct", b =>
                 {
                     b.Property<int>("ColorsId")
@@ -60,7 +45,8 @@ namespace BusinessLogicLayer.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("ColorId")
+                    b.Property<int?>("ColorId")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<int>("OrderId")
@@ -73,10 +59,14 @@ namespace BusinessLogicLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Size")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<double>("TotalPrice")
+                        .HasColumnType("float");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("ColorId");
 
                     b.HasIndex("OrderId");
 
@@ -162,7 +152,7 @@ namespace BusinessLogicLayer.Migrations
                         new
                         {
                             Id = 8,
-                            ColorName = "turquo"
+                            ColorName = "turquoise"
                         },
                         new
                         {
@@ -264,9 +254,6 @@ namespace BusinessLogicLayer.Migrations
                         .HasColumnType("bit");
 
                     b.Property<int?>("ProductCaregoryId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ProductColorId")
                         .HasColumnType("int");
 
                     b.Property<string>("ProductDescription")
@@ -526,21 +513,6 @@ namespace BusinessLogicLayer.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("CartItemColor", b =>
-                {
-                    b.HasOne("CoreLayer.Entities.CartItem", null)
-                        .WithMany()
-                        .HasForeignKey("CartItemsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("CoreLayer.Entities.Color", null)
-                        .WithMany()
-                        .HasForeignKey("ColorsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("ColorProduct", b =>
                 {
                     b.HasOne("CoreLayer.Entities.Color", null)
@@ -558,6 +530,12 @@ namespace BusinessLogicLayer.Migrations
 
             modelBuilder.Entity("CoreLayer.Entities.CartItem", b =>
                 {
+                    b.HasOne("CoreLayer.Entities.Color", "CartItemColor")
+                        .WithMany("CartItems")
+                        .HasForeignKey("ColorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("CoreLayer.Entities.Order", "CartItemOrder")
                         .WithMany("CartItems")
                         .HasForeignKey("OrderId")
@@ -569,6 +547,8 @@ namespace BusinessLogicLayer.Migrations
                         .HasForeignKey("CoreLayer.Entities.CartItem", "ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("CartItemColor");
 
                     b.Navigation("CartItemOrder");
 
@@ -650,6 +630,11 @@ namespace BusinessLogicLayer.Migrations
             modelBuilder.Entity("CoreLayer.Entities.Category", b =>
                 {
                     b.Navigation("Products");
+                });
+
+            modelBuilder.Entity("CoreLayer.Entities.Color", b =>
+                {
+                    b.Navigation("CartItems");
                 });
 
             modelBuilder.Entity("CoreLayer.Entities.Order", b =>

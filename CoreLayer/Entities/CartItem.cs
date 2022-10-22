@@ -10,16 +10,14 @@ namespace CoreLayer.Entities
 {
     public class CartItem
     {
-        public CartItem()
-        {
-            Colors = new HashSet<Color>();
-        }
+       
         [Key]
         public int Id { get; set; }
         public int ProductId { get; set; }
         public int Quantity { get; set; }
-        public string Size { get; set; }
-        public int ColorId { get; set; }
+        public double TotalPrice{ get; set; }
+        public string? Size { get; set; }
+        public int? ColorId { get; set; }
         public int OrderId { get; set; }
 
         [ForeignKey("ProductId")]
@@ -29,8 +27,8 @@ namespace CoreLayer.Entities
         [ForeignKey("OrderId")]
         [InverseProperty("CartItems")]
         public virtual Order CartItemOrder { get; set; }
-
+        [ForeignKey("ColorId")]
         [InverseProperty("CartItems")]
-        public virtual ICollection<Color> Colors { get; set; }
+        public virtual Color CartItemColor { get; set; }
     }
 }

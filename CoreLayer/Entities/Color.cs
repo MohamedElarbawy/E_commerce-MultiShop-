@@ -24,7 +24,7 @@ namespace CoreLayer.Entities
 
         [InverseProperty("Colors")]
         public virtual ICollection<Product> Products { get; set; }
-        [InverseProperty("Colors")]
+        [InverseProperty("CartItemColor")]
         public virtual ICollection<CartItem> CartItems { get; set; }
 
     }

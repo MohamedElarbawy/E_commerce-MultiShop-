@@ -56,8 +56,9 @@ namespace BusinessLogicLayer.Repositories
                     {
                         min = Convert.ToInt32(priceQueryString.FirstOrDefault());
                         max = Convert.ToInt32(priceQueryString.LastOrDefault());
-                        var result = context.Products.Where(p => p.ProductPrice > min && p.ProductPrice <= max && p.IsActive).ToList();
-                        return result;
+                        return  context.Products.Where(p => p.ProductPrice > min && p.ProductPrice <= max && p.IsActive)
+                                                     .ToList();
+                        
                     }
 
                     catch
@@ -122,7 +123,9 @@ namespace BusinessLogicLayer.Repositories
             {
                 foreach (var id in ids)
                 {
-                    productsList.Add(context.Products.Find(id));
+                    var result = context.Products.Find(id);
+                    if(result!=null)
+                    productsList.Add(result);
 
                 }
             }

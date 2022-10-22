@@ -17,8 +17,8 @@ namespace CoreLayer.Entities
 
         [Key]
         public int Id { get; set; }
-        public string UniqueId { get; set; }
-        public string Status { get; set; }
+        public string? UniqueId { get; set; }
+        public string? Status { get; set; }
         public DateTime Created { get; set; }
         public double TotalPrice { get; set; }
         public int UserId { get; set; }

@@ -14,6 +14,8 @@ $(document).ready(function () {
 //localStorage.clear();
 
 
+
+//start shopping cart----------------------------------------------------------
 var cartProduct;
 var cartProducts = [];
 var allIdsINcart = [];
@@ -58,11 +60,14 @@ function addToCart(product,chosenColor,chosenSize) {
             localStorage.setItem("cartProducts", JSON.stringify(cartProducts));
         }
 
+        
     }
-    //console.log(JSON.parse(localStorage.getItem("cartProducts")))
-
-
+    
+   alertify.notify('Successfully added to cart!', 'success', 3);
+   
+   
 }
+
 
 function addToCartWithColorNSize(product){
 
@@ -175,98 +180,6 @@ function changeQuantity(product) {
 
 
 
-
-//end shopping cart--------------------------------------------------------
-
-//wishList Start ----------------------------------------------------------
-
-
-var wishListProduct;
-var wishListProducts = [];
-var allIds = [];
-
-function addToWishLIst(product) {
-    let id = product.getAttribute("data-product-id-wishlist");
-
-    wishListProduct = {
-        productId: id,
-    }
-    wishListProducts.push(wishListProduct);
-
-    if (localStorage.getItem("wishListProducts") === null) {
-        localStorage.setItem("wishListProducts", JSON.stringify(wishListProducts));
-        getNumberOfProductsInWishList();
-
-    } else {
-        wishListProducts = JSON.parse(localStorage.getItem("wishListProducts"));
-        for (let i = 0; i < wishListProducts.length; i++) {
-            allIds.push(wishListProducts[i].productId);
-        }
-        if (allIds.indexOf(wishListProduct.productId) === -1) {
-            wishListProducts.push(wishListProduct);
-            localStorage.setItem("wishListProducts", JSON.stringify(wishListProducts));
-            getNumberOfProductsInWishList();
-
-        }
-
-
-    }
-    console.log(JSON.parse(localStorage.getItem("wishListProducts")))
-}
-
-
-
-function getNumberOfProductsInWishList() {
-    let counterElement = document.getElementById("wishlist-counter");
-    let counterElement2 = document.getElementById("wishlist_counter");
-    var productsInWishList = JSON.parse(localStorage.getItem("wishListProducts"));
-    if (productsInWishList == null) {
-        counterElement.innerHTML = 0;
-        counterElement2.innerHTML = 0;
-    } else {
-        counterElement.innerHTML = productsInWishList.length;
-        counterElement2.innerHTML = productsInWishList.length;
-    }
-}
-//wishList End -----------------------------------------------------------
-
-//alert in admin page when delete start---------------------------------------------------
-
-function alert(id) {
-    swal({
-        title: "Are you sure?",
-        text: "This Product Will Be Deleted permanently From Database",
-        icon: "warning",
-        buttons: true,
-        dangerMode: true,
-    })
-        .then((willDelete) => {
-            if (willDelete) {
-                confirmDelete(id);
-            }
-
-        });
-}
-
-function confirmDelete(productId) {
-    $.ajax({
-        type: "post",
-        url: "/Admin/delete",
-        data: { id: productId },
-        success: function (result) {
-            location.reload();
-        }
-
-    });
-
-};
-
-
-
-//alert in admin page when delete end---------------------------------------------
-
-
-
 function getTotalPrice(discount) {
     var items = localStorage.getItem("cartProducts");
     $.ajax({
@@ -278,7 +191,7 @@ function getTotalPrice(discount) {
             document.getElementById("subtotal").innerHTML = `$${result}`
             if (discount != null) {
                 discount /= 100;
-                totalPriceAfterDiscount = result - (result * discount);
+                totalPriceAfterDiscount = parseFloat(result - (result * discount)).toFixed(2);
                 console.log(totalPriceAfterDiscount);
                 document.getElementById("totalPrice-discount").innerHTML = `$${totalPriceAfterDiscount}`;
             } else
@@ -317,3 +230,117 @@ function getDiscount(button) {
         }
     })
 };
+
+
+//end shopping cart----------------------------------------------------------
+//start checkout page--------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+//end checkout page----------------------------------------------------------
+//Start wishList ------------------------------------------------------------
+
+
+var wishListProduct;
+var wishListProducts = [];
+var allIds = [];
+
+function addToWishLIst(product) {
+    let id = product.getAttribute("data-product-id-wishlist");
+
+    wishListProduct = {
+        productId: id,
+    }
+    wishListProducts.push(wishListProduct);
+
+    if (localStorage.getItem("wishListProducts") === null) {
+        localStorage.setItem("wishListProducts", JSON.stringify(wishListProducts));
+        getNumberOfProductsInWishList();
+
+    } else {
+        wishListProducts = JSON.parse(localStorage.getItem("wishListProducts"));
+        for (let i = 0; i < wishListProducts.length; i++) {
+            allIds.push(wishListProducts[i].productId);
+        }
+        if (allIds.indexOf(wishListProduct.productId) === -1) {
+            wishListProducts.push(wishListProduct);
+            localStorage.setItem("wishListProducts", JSON.stringify(wishListProducts));
+            getNumberOfProductsInWishList();
+
+        }
+
+
+    }
+    alertify.notify('Successfully added to WishList!', 'success', 3);
+
+}
+
+
+
+function getNumberOfProductsInWishList() {
+    let counterElement = document.getElementById("wishlist-counter");
+    let counterElement2 = document.getElementById("wishlist_counter");
+    var productsInWishList = JSON.parse(localStorage.getItem("wishListProducts"));
+    if (productsInWishList == null) {
+        counterElement.innerHTML = 0;
+        counterElement2.innerHTML = 0;
+    } else {
+        counterElement.innerHTML = productsInWishList.length;
+        counterElement2.innerHTML = productsInWishList.length;
+    }
+}
+//End wishList  --------------------------------------------------------------------------
+//start alert in admin page when delete ---------------------------------------------------
+
+function alert(id) {
+    swal({
+        title: "Are you sure?",
+        text: "This Product Will Be Deleted permanently From Database",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+    })
+        .then((willDelete) => {
+            if (willDelete) {
+                confirmDelete(id);
+            }
+
+        });
+}
+
+function confirmDelete(productId) {
+    $.ajax({
+        type: "post",
+        url: "/Admin/delete",
+        data: { id: productId },
+        success: function (result) {
+            location.reload();
+        }
+
+    });
+
+};
+
+
+
+//end alert in admin page when delete ---------------------------------------------
+
+
+
+//function alertWheneAddProduct() {
+//    const item = document.createElement("div");
+//    item.innerHTML = "Successfully added to cart!";
+//    item.className = "alert alert-success";
+//    item.style = "position: fixed; right: 0; bottom: 0;z-index:999;border-radius: 10px";
+//    item.setAttribute("id", "alert-AddProduct");
+//    document.querySelector("body").appendChild(item);
+
+//}
