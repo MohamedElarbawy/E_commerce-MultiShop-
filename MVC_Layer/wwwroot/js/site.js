@@ -37,7 +37,7 @@ function addToCart(product,chosenColor,chosenSize) {
         sessionStorage.setItem("cartProducts", JSON.stringify(cartProducts));
         getNumberOfProductsIncart();
 
-    } else {
+    } else {//check if the item already exists and add it if not exists
         cartProducts = JSON.parse(sessionStorage.getItem("cartProducts"));
         for (let i = 0; i < cartProducts.length; i++) {
             allIdsINcart.push(cartProducts[i].id);
@@ -48,7 +48,8 @@ function addToCart(product,chosenColor,chosenSize) {
             getNumberOfProductsIncart();
 
         } else {
-
+            //if item exists increase count if click add to cart
+            //add colors and size if not chosen at first time
             var selectedProduct = Array.from(cartProducts).filter(x => x.id == cartProduct.id)[0];
             selectedProduct.count += 1;
             selectedProduct.color = cartProduct.color;
@@ -147,20 +148,16 @@ function deleteProductFromCart(product) {
 
 
 function changeQuantity(product) {
-    //  var oldValue = product.parentElement.parentElement.querySelector("input").value;
     var sessionStorageProducts = JSON.parse(sessionStorage.getItem("cartProducts"));
 
     var selectedProduct = Array.from(sessionStorageProducts).filter(x => x.id == product.getAttribute("data-product-id"))[0];
 
     if (product.classList.contains("btn-plus")) {
-        // var newVal = parseInt(oldValue) + 1;
         selectedProduct.count += 1;
     } else {
         if (selectedProduct.count > 1) {
-            //  newVal = parseInt(oldValue) - 1;
             selectedProduct.count -= 1;
         } else {
-            // newVal = 1;
             selectedProduct.count = 1;
         }
     }
@@ -173,7 +170,7 @@ function changeQuantity(product) {
     newsessionStorageProducts.push(selectedProduct);
     sessionStorage.setItem("cartProducts", JSON.stringify(newsessionStorageProducts));
     console.log(sessionStorageProducts);
-    getTotalPrice()
+    getDiscount();
 };
 
 
@@ -207,16 +204,26 @@ function getTotalPrice(discount) {
 
 
 
-function getDiscount(button) {
-    var discountCode = button.parentElement.parentElement.querySelector("input").value;
+function getDiscount(code) {
+   // let discountCode = button.parentElement.parentElement.querySelector("input").value;
+    let discountCode = "";
+    if (code != null)
+        discountCode = code;
+    else discountCode = document.getElementById("coupon-code").value;
+    let discountCodesList =[];
+    discountCodesList.push(discountCode);
+
     $.ajax({
         method: "GET",
         url: "/cart/getDiscount",
         data: { code: discountCode },
         success: function (result) {
-            if (result > 0 && result < 100) {
+            if (code != null)
+                return result;
+            else if(result > 0 && result < 100) {
                 document.getElementById("dicount").innerHTML = `${result}%`;
                 getTotalPrice(result);
+                sessionStorage.setItem("discountCodes", discountCodesList);
             } else {
                 document.getElementById("dicount").innerHTML = `$00.0`;
                 getTotalPrice();
@@ -240,8 +247,36 @@ function sendItems() {
     console.log("item sent");
 }
 
+function appendProductsToCheckoutBody() {
 
+    let parent = document.getElementById("order-products")
+    let products = JSON.parse(sessionStorage.getItem("cartProducts"));
+    let items = ``;
+    products.forEach(function (product, i) {
+        items += `<div class="d-flex justify-content-between">
+        <p>${product.name}</p>
+        <p>$${product.totalPrice}</p>
+    </div>`
+    });
+    parent.innerHTML = ` <h6 class="mb-3">Products</h6>
+${items}
+`
+   
+}
+function addTotalPriceToCheckoutPage() {
+    let subtotalElement = document.getElementById("subtotal-chckout")
+    let products = JSON.parse(sessionStorage.getItem("cartProducts"));
+    let subtotalPrice=0
+    products.forEach(function (product, i) {
+        subtotalPrice += parseInt(product.totalPrice);
+    })
+    subtotalElement.innerHTML = `$${subtotalPrice}`
+  let dicountCode=  sessionStorage.getItem("discountCodes");
+    let discount = getDiscount(dicountCode);
+    if (discount > 0)
+        document.getElementById("discount-checkout").innerHTML=`$${discount}%`
 
+}
 
 
 
