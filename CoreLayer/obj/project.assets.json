@@ -601,11 +601,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\TOSHIBA\\Downloads\\Documents\\My1stE_CommerceSite\\CoreLayer\\CoreLayer.csproj",
+      "projectUniqueName": "E:\\myfirstproject\\My1stE_CommerceSite\\CoreLayer\\CoreLayer.csproj",
       "projectName": "CoreLayer",
-      "projectPath": "C:\\Users\\TOSHIBA\\Downloads\\Documents\\My1stE_CommerceSite\\CoreLayer\\CoreLayer.csproj",
+      "projectPath": "E:\\myfirstproject\\My1stE_CommerceSite\\CoreLayer\\CoreLayer.csproj",
       "packagesPath": "C:\\Users\\TOSHIBA\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\TOSHIBA\\Downloads\\Documents\\My1stE_CommerceSite\\CoreLayer\\obj\\",
+      "outputPath": "E:\\myfirstproject\\My1stE_CommerceSite\\CoreLayer\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\TOSHIBA\\AppData\\Roaming\\NuGet\\NuGet.Config",

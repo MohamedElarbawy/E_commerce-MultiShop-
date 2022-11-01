@@ -1,4 +1,5 @@
-﻿using CoreLayer;
+﻿using BusinessLogicLayer.Helper;
+using CoreLayer;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MVC_Layer.Controllers
@@ -19,7 +20,8 @@ namespace MVC_Layer.Controllers
 
         public JsonResult getAll()
         {
-            var products = unitOfWork.Products.GetAllActiveProducts();
+            var products = unitOfWork.Products.GetAllThatMatchesACriteria(p=>p.IsActive,30);
+       
             return Json(products);
         }
         public JsonResult Filter(string colorQuery,string priceQuery)

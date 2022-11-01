@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -21,10 +22,20 @@ namespace BusinessLogicLayer
         {
             return _context.Set<T>().ToList();
         }
+        
+        public IEnumerable<T> GetAllThatMatchesACriteria(Expression<Func<T,bool>> critria)
+        {
+            return _context.Set<T>().Where(critria).ToList();
+        }
+        public IEnumerable<T> GetAllThatMatchesACriteria(Expression<Func<T,bool>> critria,int numberOfT)
+        {
+            return _context.Set<T>().Where(critria).Take(numberOfT).ToList();
+        }
         public T GetById(int id)
         {
             var entity = _context.Set<T>().Find(id);
-            return entity;
+                 return entity;
+            
         }
         public T Add(T entity)
         {
@@ -33,11 +44,20 @@ namespace BusinessLogicLayer
             return entity;
 
         }
-
+        public void AddRange(List<T> entities)
+        {
+           _context.Set<T>().AddRange(entities);
+        }
         public void Delete(int id)
         {
             var entity = GetById(id);
             _context.Set<T>().Remove(entity);
+
+        } 
+        public void DeleteRange(List<T> entities)
+        {
+            
+            _context.Set<T>().RemoveRange(entities);
 
         }
 
@@ -63,5 +83,14 @@ namespace BusinessLogicLayer
         {
             return _context.Set<T>().Count();
         }
+
+        public IEnumerable<T> Search(Expression<Func<T, bool>> criteria)
+        {
+           
+            return _context.Set<T>().Where(criteria).ToList();
+           
+        }
+
+      
     }
 }

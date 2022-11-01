@@ -15,6 +15,9 @@ namespace MVC_Layer.Mapper
             CreateMap<Category, CategoryViewModel>();
             CreateMap<CategoryViewModel, Category>();
 
+            CreateMap<UserData,UserDataViewModel>();
+            CreateMap<UserDataViewModel, UserData>();
+
         }
 
     }

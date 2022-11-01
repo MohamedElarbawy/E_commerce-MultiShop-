@@ -11,5 +11,9 @@ namespace CoreLayer.Interfaces
     {
 
         public IEnumerable<Color> GetColors(List<int> ids);
+        public int GetIdByName(string name);
+        public int GetDefaultColorId(int ProductId);
+
+
     }
 }

@@ -6,12 +6,11 @@ $(document).ready(function () {
 
     getNumberOfProductsInWishList();
     getNumberOfProductsIncart();
-    appendProductsToCartBody();
-    getTotalPrice();
+
+   
 });
 
 
-//localStorage.clear();
 
 
 
@@ -34,18 +33,18 @@ function addToCart(product,chosenColor,chosenSize) {
     }
     cartProducts.push(cartProduct);
 
-    if (localStorage.getItem("cartProducts") === null || localStorage.getItem("cartProducts").length === 0) {
-        localStorage.setItem("cartProducts", JSON.stringify(cartProducts));
+    if (sessionStorage.getItem("cartProducts") === null || sessionStorage.getItem("cartProducts").length === 0) {
+        sessionStorage.setItem("cartProducts", JSON.stringify(cartProducts));
         getNumberOfProductsIncart();
 
     } else {
-        cartProducts = JSON.parse(localStorage.getItem("cartProducts"));
+        cartProducts = JSON.parse(sessionStorage.getItem("cartProducts"));
         for (let i = 0; i < cartProducts.length; i++) {
             allIdsINcart.push(cartProducts[i].id);
         }
         if (allIdsINcart.indexOf(cartProduct.id) === -1) {
             cartProducts.push(cartProduct);
-            localStorage.setItem("cartProducts", JSON.stringify(cartProducts));
+            sessionStorage.setItem("cartProducts", JSON.stringify(cartProducts));
             getNumberOfProductsIncart();
 
         } else {
@@ -57,7 +56,7 @@ function addToCart(product,chosenColor,chosenSize) {
             selectedProduct.totalPrice = parseInt(selectedProduct.price) * selectedProduct.count;
 
             console.log(cartProducts);
-            localStorage.setItem("cartProducts", JSON.stringify(cartProducts));
+            sessionStorage.setItem("cartProducts", JSON.stringify(cartProducts));
         }
 
         
@@ -85,7 +84,7 @@ function getNumberOfProductsIncart() {
     let counterElement = document.getElementById("shoppingCart-counter");
     let counterElement2 = document.getElementById("cart-counter");
 
-    var productsIncart = JSON.parse(localStorage.getItem("cartProducts"));
+    var productsIncart = JSON.parse(sessionStorage.getItem("cartProducts"));
 
     if (productsIncart == null) {
         counterElement.innerHTML = 0;
@@ -101,11 +100,11 @@ function getNumberOfProductsIncart() {
 
 function appendProductsToCartBody() {
 
-    var localStorageProducts = JSON.parse(localStorage.getItem("cartProducts"));
-    console.log(localStorageProducts);
+    var sessionStorageProducts = JSON.parse(sessionStorage.getItem("cartProducts"));
+    console.log(sessionStorageProducts);
 
-    for (var i = 0; i < localStorageProducts.length; i++) {
-        var product = localStorageProducts[i];
+    for (var i = 0; i < sessionStorageProducts.length; i++) {
+        var product = sessionStorageProducts[i];
         document.getElementById("cartBody").innerHTML += `
                      <tr ${product.color !== undefined ?'style="border-left:solid;border-width:thick;border-left-color:'+product.color:''}">
                         <td class="align-middle"><img src="/img/${product.img}" alt="" style="width: 50px;"></td>
@@ -133,12 +132,12 @@ function appendProductsToCartBody() {
 }
 
 function deleteProductFromCart(product) {
-    var localStorageProducts = JSON.parse(localStorage.getItem("cartProducts"));
+    var sessionStorageProducts = JSON.parse(sessionStorage.getItem("cartProducts"));
     //remove from ui
     product.parentElement.parentElement.remove();
-    //remove from localStorage
-    var newLocalStorageProducts = localStorageProducts.filter(x => x.id != product.getAttribute("data-product-id"));
-    localStorage.setItem("cartProducts", JSON.stringify(newLocalStorageProducts));
+    //remove from sessionStorage
+    var newsessionStorageProducts = sessionStorageProducts.filter(x => x.id != product.getAttribute("data-product-id"));
+    sessionStorage.setItem("cartProducts", JSON.stringify(newsessionStorageProducts));
     getNumberOfProductsIncart();
     getTotalPrice()
 };
@@ -149,9 +148,9 @@ function deleteProductFromCart(product) {
 
 function changeQuantity(product) {
     //  var oldValue = product.parentElement.parentElement.querySelector("input").value;
-    var localStorageProducts = JSON.parse(localStorage.getItem("cartProducts"));
+    var sessionStorageProducts = JSON.parse(sessionStorage.getItem("cartProducts"));
 
-    var selectedProduct = Array.from(localStorageProducts).filter(x => x.id == product.getAttribute("data-product-id"))[0];
+    var selectedProduct = Array.from(sessionStorageProducts).filter(x => x.id == product.getAttribute("data-product-id"))[0];
 
     if (product.classList.contains("btn-plus")) {
         // var newVal = parseInt(oldValue) + 1;
@@ -170,10 +169,10 @@ function changeQuantity(product) {
     product.parentElement.parentElement.parentElement.parentElement.querySelector(".totalPrice").innerHTML = selectedProduct.totalPrice;
 
 
-    var newLocalStorageProducts = localStorageProducts.filter(x => x.id != product.getAttribute("data-product-id"));
-    newLocalStorageProducts.push(selectedProduct);
-    localStorage.setItem("cartProducts", JSON.stringify(newLocalStorageProducts));
-    console.log(localStorageProducts);
+    var newsessionStorageProducts = sessionStorageProducts.filter(x => x.id != product.getAttribute("data-product-id"));
+    newsessionStorageProducts.push(selectedProduct);
+    sessionStorage.setItem("cartProducts", JSON.stringify(newsessionStorageProducts));
+    console.log(sessionStorageProducts);
     getTotalPrice()
 };
 
@@ -181,21 +180,21 @@ function changeQuantity(product) {
 
 
 function getTotalPrice(discount) {
-    var items = localStorage.getItem("cartProducts");
+    var items = sessionStorage.getItem("cartProducts");
     $.ajax({
         method: "GET",
         url: "/cart/getTotalPrice",
-        data: { localStorageItems: items },
+        data: { sessionStorageItems: items },
         success: function (result) {
 
-            document.getElementById("subtotal").innerHTML = `$${result}`
+            document.getElementById("subtotal").innerHTML = `$${parseFloat(result).toFixed(2)}`
             if (discount != null) {
                 discount /= 100;
                 totalPriceAfterDiscount = parseFloat(result - (result * discount)).toFixed(2);
                 console.log(totalPriceAfterDiscount);
                 document.getElementById("totalPrice-discount").innerHTML = `$${totalPriceAfterDiscount}`;
             } else
-                document.getElementById("totalPrice-discount").innerHTML = `$${result}`;
+                document.getElementById("totalPrice-discount").innerHTML = `$${parseFloat(result).toFixed(2)}`;
 
 
         }, error: function (xhr, status) {
@@ -235,7 +234,11 @@ function getDiscount(button) {
 //end shopping cart----------------------------------------------------------
 //start checkout page--------------------------------------------------------
 
-
+function sendItems() {
+    var x = sessionStorage.getItem("cartProducts");
+    document.getElementById('addcartitem').value = x;
+    console.log("item sent");
+}
 
 
 
@@ -261,18 +264,18 @@ function addToWishLIst(product) {
     }
     wishListProducts.push(wishListProduct);
 
-    if (localStorage.getItem("wishListProducts") === null) {
-        localStorage.setItem("wishListProducts", JSON.stringify(wishListProducts));
+    if (sessionStorage.getItem("wishListProducts") === null) {
+        sessionStorage.setItem("wishListProducts", JSON.stringify(wishListProducts));
         getNumberOfProductsInWishList();
 
     } else {
-        wishListProducts = JSON.parse(localStorage.getItem("wishListProducts"));
+        wishListProducts = JSON.parse(sessionStorage.getItem("wishListProducts"));
         for (let i = 0; i < wishListProducts.length; i++) {
             allIds.push(wishListProducts[i].productId);
         }
         if (allIds.indexOf(wishListProduct.productId) === -1) {
             wishListProducts.push(wishListProduct);
-            localStorage.setItem("wishListProducts", JSON.stringify(wishListProducts));
+            sessionStorage.setItem("wishListProducts", JSON.stringify(wishListProducts));
             getNumberOfProductsInWishList();
 
         }
@@ -288,7 +291,7 @@ function addToWishLIst(product) {
 function getNumberOfProductsInWishList() {
     let counterElement = document.getElementById("wishlist-counter");
     let counterElement2 = document.getElementById("wishlist_counter");
-    var productsInWishList = JSON.parse(localStorage.getItem("wishListProducts"));
+    var productsInWishList = JSON.parse(sessionStorage.getItem("wishListProducts"));
     if (productsInWishList == null) {
         counterElement.innerHTML = 0;
         counterElement2.innerHTML = 0;
@@ -332,15 +335,63 @@ function confirmDelete(productId) {
 
 
 //end alert in admin page when delete ---------------------------------------------
+//start searching for products  ajax  ---------------------------------------------
 
 
 
-//function alertWheneAddProduct() {
-//    const item = document.createElement("div");
-//    item.innerHTML = "Successfully added to cart!";
-//    item.className = "alert alert-success";
-//    item.style = "position: fixed; right: 0; bottom: 0;z-index:999;border-radius: 10px";
-//    item.setAttribute("id", "alert-AddProduct");
-//    document.querySelector("body").appendChild(item);
 
-//}
+
+
+$("#search").keyup(function () {
+
+    let x = $(this).val();
+
+    $.ajax({
+        method: "GET",
+        url: "/Search/Search",
+        data: {s:x },
+        success: function (result) {
+            console.log(result);
+            let items = '';
+            $.each(result, function (i, product) {
+
+                items += `<div class="col-lg-4 col-md-6 col-sm-6 pb-1 " id="div1">
+                       <div class="product-item bg-light mb-4">
+                            <div class="product-img position-relative overflow-hidden">
+                                <img class="img-fluid w-100" src="/img/${product.imgName}" alt="">
+                                <div class="product-action">
+                                    <a class="btn btn-outline-dark btn-square" title="Add To Cart"
+                                   data-product-id="${product.id}"
+                                   data-product-name="${product.productName}"
+                                   data-product-img="${product.imgName}"
+                                   data-product-price="${product.productPrice}"
+                                   onclick="addToCart(this)"><i class="fa fa-shopping-cart"></i></a>
+                                    <a class="btn btn-outline-dark btn-square" data-product-id-wishlist="${product.id}" onclick="addToWishLIst(this)"><i class="far fa-heart"></i></a>
+
+                                </div>
+                            </div>
+                            <div class="text-center py-4">
+                                <a class="h6 text-decoration-none text-truncate" href="/Home/ProductDetails/${product.id}">${product.productName}</a>
+                                <div class="d-flex align-items-center justify-content-center mt-2">
+                                    <h5>$${product.productPrice}</h5>
+                                </div>
+
+                            </div>
+                        </div>
+                        </div>`
+            });
+            $("#renderSearch").html(items);
+        },
+        error: function (xhr, status) {
+            console.log(xhr);
+            console.log(status);
+
+        }
+    });
+
+
+});
+
+
+
+//end searching for products  ajax  ---------------------------------------------

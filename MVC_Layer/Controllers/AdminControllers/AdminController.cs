@@ -116,7 +116,7 @@ namespace MVC_Layer.Controllers.AdminControllers
         {
             if (!ModelState.IsValid)
                 return View(entity);
-             var product = unitOfWork.Products.GetByIdWithColors(entity.Id);
+             var product = unitOfWork.Products.GetProductWithItsRelatedColors(entity.Id);
             if (colorIds.Any())
             {
                 var colors = unitOfWork.Colors.GetColors(colorIds);
@@ -133,20 +133,22 @@ namespace MVC_Layer.Controllers.AdminControllers
 
 
 
-        [HttpPost]
+      
         public IActionResult Delete(int id)
         {
+          var deletedProduct=  unitOfWork.Products.GetById(id);
+            if (deletedProduct.ImgName != null)
+                UploadFile.RemoveFile("img", deletedProduct.ImgName);
             unitOfWork.Products.Delete(id);
             unitOfWork.Complete();
             return RedirectToAction("Index");
-
-
         }
 
 
         public IActionResult SoftDelete(int id)
         {
-            unitOfWork.Products.ChangeActiveStateToFalse(id);
+           
+            unitOfWork.Products.ChangeActiveState(id);
             unitOfWork.Complete();
 
             return RedirectToAction("Index");
@@ -154,7 +156,7 @@ namespace MVC_Layer.Controllers.AdminControllers
 
         public IActionResult ShowProduct(int id)
         {
-            unitOfWork.Products.ChangeActiveStateToTrue(id);
+            unitOfWork.Products.ChangeActiveState(id);
             unitOfWork.Complete();
 
             return RedirectToAction("Index");

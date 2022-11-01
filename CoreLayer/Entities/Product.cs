@@ -21,8 +21,8 @@ namespace CoreLayer.Entities
         public int Id { get; set; }
       
         [StringLength(100)]
-        public string? ProductName { get; set; }
-        public double? ProductPrice { get; set; }
+        public string ProductName { get; set; }
+        public double ProductPrice { get; set; }
        
         [StringLength(2000)]
         public string? ProductDescription { get; set; }

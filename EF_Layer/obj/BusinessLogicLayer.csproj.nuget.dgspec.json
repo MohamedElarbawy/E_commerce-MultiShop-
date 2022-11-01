@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\TOSHIBA\\Downloads\\Documents\\My1stE_CommerceSite\\EF_Layer\\BusinessLogicLayer.csproj": {}
+    "E:\\myfirstproject\\My1stE_CommerceSite\\EF_Layer\\BusinessLogicLayer.csproj": {}
   },
   "projects": {
-    "C:\\Users\\TOSHIBA\\Downloads\\Documents\\My1stE_CommerceSite\\CoreLayer\\CoreLayer.csproj": {
+    "E:\\myfirstproject\\My1stE_CommerceSite\\CoreLayer\\CoreLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\TOSHIBA\\Downloads\\Documents\\My1stE_CommerceSite\\CoreLayer\\CoreLayer.csproj",
+        "projectUniqueName": "E:\\myfirstproject\\My1stE_CommerceSite\\CoreLayer\\CoreLayer.csproj",
         "projectName": "CoreLayer",
-        "projectPath": "C:\\Users\\TOSHIBA\\Downloads\\Documents\\My1stE_CommerceSite\\CoreLayer\\CoreLayer.csproj",
+        "projectPath": "E:\\myfirstproject\\My1stE_CommerceSite\\CoreLayer\\CoreLayer.csproj",
         "packagesPath": "C:\\Users\\TOSHIBA\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\TOSHIBA\\Downloads\\Documents\\My1stE_CommerceSite\\CoreLayer\\obj\\",
+        "outputPath": "E:\\myfirstproject\\My1stE_CommerceSite\\CoreLayer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\TOSHIBA\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -68,14 +68,14 @@
         }
       }
     },
-    "C:\\Users\\TOSHIBA\\Downloads\\Documents\\My1stE_CommerceSite\\EF_Layer\\BusinessLogicLayer.csproj": {
+    "E:\\myfirstproject\\My1stE_CommerceSite\\EF_Layer\\BusinessLogicLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\TOSHIBA\\Downloads\\Documents\\My1stE_CommerceSite\\EF_Layer\\BusinessLogicLayer.csproj",
+        "projectUniqueName": "E:\\myfirstproject\\My1stE_CommerceSite\\EF_Layer\\BusinessLogicLayer.csproj",
         "projectName": "BusinessLogicLayer",
-        "projectPath": "C:\\Users\\TOSHIBA\\Downloads\\Documents\\My1stE_CommerceSite\\EF_Layer\\BusinessLogicLayer.csproj",
+        "projectPath": "E:\\myfirstproject\\My1stE_CommerceSite\\EF_Layer\\BusinessLogicLayer.csproj",
         "packagesPath": "C:\\Users\\TOSHIBA\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\TOSHIBA\\Downloads\\Documents\\My1stE_CommerceSite\\EF_Layer\\obj\\",
+        "outputPath": "E:\\myfirstproject\\My1stE_CommerceSite\\EF_Layer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\TOSHIBA\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -92,8 +92,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\TOSHIBA\\Downloads\\Documents\\My1stE_CommerceSite\\CoreLayer\\CoreLayer.csproj": {
-                "projectPath": "C:\\Users\\TOSHIBA\\Downloads\\Documents\\My1stE_CommerceSite\\CoreLayer\\CoreLayer.csproj"
+              "E:\\myfirstproject\\My1stE_CommerceSite\\CoreLayer\\CoreLayer.csproj": {
+                "projectPath": "E:\\myfirstproject\\My1stE_CommerceSite\\CoreLayer\\CoreLayer.csproj"
               }
             }
           }
@@ -108,6 +108,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "MailKit": {
+              "target": "Package",
+              "version": "[3.4.2, )"
+            },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
               "version": "[6.0.9, )"
@@ -125,6 +129,14 @@
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[6.0.9, )"
+            },
+            "MimeKit": {
+              "target": "Package",
+              "version": "[3.4.2, )"
+            },
+            "SendGrid": {
+              "target": "Package",
+              "version": "[9.28.1, )"
             }
           },
           "imports": [

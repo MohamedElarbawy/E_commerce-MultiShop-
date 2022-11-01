@@ -25,7 +25,9 @@
                 <label class="form-label">Category</label>
 
                 <select class="form-select" asp-items="ViewBag.categories" asp-for="ProductCaregoryId">
+                    @if(Model != null){
                     <option selected >@Model.ProductCaregory.CategoryName</option>
+                    }
                 </select>
                 <button class="btn btn-outline-primary" type="button">Button</button>
             </div>
@@ -44,6 +46,9 @@
             <div class="mb-3">
                 <label class="form-label" for="basic-default-message">Description</label>
                 <textarea class="form-control" placeholder="Product description" asp-for="ProductDescription"></textarea>
+            </div>
+                <div>
+                <img class="profile-picture" src="~/img/@Model.ImgName"  style="height:20%;width:20%"  />
             </div>
             <div class="mb-3">
                 <label for="formFile" class="form-label">Upload Image</label>

@@ -75,25 +75,25 @@
             <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
                 <div class="d-flex align-items-center bg-light mb-4" style="padding: 30px;">
                     <h1 class="fa fa-check text-primary m-0 mr-3"></h1>
-                    <h5 class="font-weight-semi-bold m-0">Quality Product</h5>
+                    <h5 class="font-weight-semi-bold m-0">@Localizer["Quality Product"]</h5>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
                 <div class="d-flex align-items-center bg-light mb-4" style="padding: 30px;">
                     <h1 class="fa fa-shipping-fast text-primary m-0 mr-2"></h1>
-                    <h5 class="font-weight-semi-bold m-0">Free Shipping</h5>
+                    <h5 class="font-weight-semi-bold m-0">@Localizer["Free Shipping"]</h5>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
                 <div class="d-flex align-items-center bg-light mb-4" style="padding: 30px;">
                     <h1 class="fas fa-exchange-alt text-primary m-0 mr-3"></h1>
-                    <h5 class="font-weight-semi-bold m-0">14-Day Return</h5>
+                    <h5 class="font-weight-semi-bold m-0">@Localizer["14-Day Return"]</h5>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
                 <div class="d-flex align-items-center bg-light mb-4" style="padding: 30px;">
                     <h1 class="fa fa-phone-volume text-primary m-0 mr-3"></h1>
-                    <h5 class="font-weight-semi-bold m-0">24/7 Support</h5>
+                    <h5 class="font-weight-semi-bold m-0">@Localizer["24/7 Support"]</h5>
                 </div>
             </div>
         </div>
@@ -104,7 +104,7 @@
 
     <!-- Categories Start -->
     <div class="container-fluid pt-5">
-        <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Categories</span></h2>
+        <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">@Localizer["Categories"] </span></h2>
         <div class="row px-xl-5 pb-3">
             @foreach (var category in ViewBag.categories)
             {
@@ -130,7 +130,7 @@
 
     <!-- Products Start -->
     <div class="container-fluid pt-5 pb-3">
-        <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Featured Products</span></h2>
+        <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">@Localizer["Featured Products"]</span></h2>
         <div class="row px-xl-5">
 @if(Model!=null){
             @foreach(var item in Model)
@@ -140,7 +140,7 @@
                     <div class="product-img position-relative overflow-hidden">
                         <img class="img-fluid w-100" src="~/img/@item.ImgName" alt="">
                         <div class="product-action">
-                            <a class="btn btn-outline-dark btn-square" title="Add To Cart" 
+                            <a class="btn btn-outline-dark btn-square" title="@Localizer["Add To Cart"]" 
                             data-product-id     ="@item.Id"
                             data-product-name   ="@item.ProductName"
                             data-product-img    ="@item.ImgName"
@@ -148,7 +148,7 @@
                                                 
                             onclick="addToCart(this)"><i class="fa fa-shopping-cart"></i></a>
 
-                            <a class="btn btn-outline-dark btn-square" title="Add To WishList" data-product-id-wishlist="@item.Id" onclick="addToWishLIst(this)"><i class="far fa-heart"></i></a>
+                            <a class="btn btn-outline-dark btn-square" title="@Localizer["Add To WishList"]" data-product-id-wishlist="@item.Id" onclick="addToWishLIst(this)"><i class="far fa-heart"></i></a>
                        
                         </div>
                     </div>
@@ -180,9 +180,9 @@
                 <div class="product-offer mb-30" style="height: 300px;">
                     <img class="img-fluid" src="~/img/offer-1.jpg" alt="">
                     <div class="offer-text">
-                        <h6 class="text-white text-uppercase">Save 20%</h6>
-                        <h3 class="text-white mb-3">Special Offer</h3>
-                        <a href="" class="btn btn-primary">Shop Now</a>
+                        <h6 class="text-white text-uppercase">@Localizer["Save 20%"]</h6>
+                        <h3 class="text-white mb-3">@Localizer["Special Offer"]</h3>
+                        <a href="" class="btn btn-primary">@Localizer["Shop Now"]</a>
                     </div>
                 </div>
             </div>
@@ -190,9 +190,9 @@
                 <div class="product-offer mb-30" style="height: 300px;">
                     <img class="img-fluid" src="~/img/offer-2.jpg" alt="">
                     <div class="offer-text">
-                        <h6 class="text-white text-uppercase">Save 20%</h6>
-                        <h3 class="text-white mb-3">Special Offer</h3>
-                        <a href="" class="btn btn-primary">Shop Now</a>
+                        <h6 class="text-white text-uppercase">@Localizer["Save 20%"]</h6>
+                        <h3 class="text-white mb-3">@Localizer["Special Offer"]</h3>
+                        <a href="" class="btn btn-primary">@Localizer["Shop Now"]</a>
                     </div>
                 </div>
             </div>
@@ -203,7 +203,7 @@
 
     <!-- Products Start -->
      <div class="container-fluid pt-5 pb-3">
-        <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Recent Products</span></h2>
+        <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">@Localizer["Recent Products"]</span></h2>
         <div class="row px-xl-5">
             @foreach(var item in ViewBag.recentProducts)
             {

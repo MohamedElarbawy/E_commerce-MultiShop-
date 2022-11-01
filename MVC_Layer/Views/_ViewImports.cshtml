@@ -1,3 +1,9 @@
 ﻿@using MVC_Layer
 @using MVC_Layer.Models
+@using Microsoft.Extensions.Localization
+@using MVC_Layer.Resources
+
+@inject IStringLocalizer<Resource> Localizer
+
+
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers

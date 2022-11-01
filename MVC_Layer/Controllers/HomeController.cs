@@ -1,9 +1,5 @@
 ﻿using CoreLayer;
-using CoreLayer.Interfaces;
-using BusinessLogicLayer;
 using Microsoft.AspNetCore.Mvc;
-using MVC_Layer.Models;
-using System.Diagnostics;
 using BusinessLogicLayer.Helper;
 
 namespace MVC_Layer.Controllers
@@ -15,26 +11,25 @@ namespace MVC_Layer.Controllers
         public HomeController(IUnitOfWork unitOfWork)
         {
             this.unitOfWork = unitOfWork;
-
         }
         public IActionResult Index()
         {
-            ViewBag.categories = unitOfWork.Categories.GetAllCategoreis();
+            ViewBag.categories = unitOfWork.Categories.GetAll().OrderBy(c=>c.CategoryName);
             ViewBag.recentProducts = unitOfWork.Products.GetLastAddedProducts(12);
-            var products = unitOfWork.Products.GetAllActiveProductsIncludecolors();
-
+            var products = unitOfWork.Products.GetAllActiveProductsIncludecolors(30);
+         
             return View(products);
         }
 
         public IActionResult ProductDetails(int id)
         {
-            var product = unitOfWork.Products.GetByIdWithColors(id);
+            var product = unitOfWork.Products.GetProductWithItsRelatedColors(id);
             return View(product);
         }
 
         public IActionResult GetProductsInCategory(int id)
         {
-            var product = unitOfWork.Products.GetProductsInCAtegory(id);
+            var product = unitOfWork.Products.GetAllThatMatchesACriteria(p=>p.ProductCaregoryId==id);
             return View(product);
         }
 

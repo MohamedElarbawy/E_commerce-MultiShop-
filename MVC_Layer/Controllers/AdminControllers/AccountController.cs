@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using CoreLayer.Interfaces;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using MVC_Layer.Models;
 
@@ -9,11 +10,14 @@ namespace MVC_Layer.Controllers.AdminControllers
         private readonly UserManager<IdentityUser> userManager;
         private readonly SignInManager<IdentityUser> signInManager;
         private readonly ILogger<AccountController> logger;
-        public AccountController(UserManager<IdentityUser> userManager ,SignInManager<IdentityUser> signInManager,ILogger<AccountController> logger)
+        private readonly IMailService mailService;
+
+        public AccountController(UserManager<IdentityUser> userManager ,SignInManager<IdentityUser> signInManager,ILogger<AccountController> logger,IMailService mailService)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
             this.logger = logger;
+            this.mailService = mailService;
         }
 
         public IActionResult LogIn()
@@ -94,6 +98,7 @@ namespace MVC_Layer.Controllers.AdminControllers
                     var token = await userManager.GeneratePasswordResetTokenAsync(user);
                     var passwordResetLink = Url.Action("ResetPassword", "Account", new { Email = model.Email, Token = token }, Request.Scheme);
                     logger.Log(LogLevel.Warning, passwordResetLink);
+                    mailService.SendEmail(model.Email, "reset password", passwordResetLink);
                     return RedirectToAction("ConfirmForgetPassword");
                 }
                 else

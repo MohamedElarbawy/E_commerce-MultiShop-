@@ -11,18 +11,13 @@ namespace CoreLayer.Interfaces
     {
         IEnumerable<Product> GetProductsIncludeCategoryNColors();
         IEnumerable<Product> GetAllActiveProductsIncludecolors();
-        IEnumerable<Product> GetAllActiveProducts();
-
-        IEnumerable<Product> GetProductsInCAtegory(int id);
-        //IEnumerable<Product> GetProductsPerPage(int pageNumber,int pageSize);
+        IEnumerable<Product> GetAllActiveProductsIncludecolors(int numbersOfProducts);
         IEnumerable<Product> FilterProductsByPrice(string priceRange);
-     
         IEnumerable<Product> FilterProductsByColor(string colorsIds);
         IEnumerable<Product> GetLastAddedProducts(int NumberOfProducts);
-        public Product GetByIdWithColors(int id);
+        public Product GetProductWithItsRelatedColors(int id);
         void Edit(Product newProduct, Product oldProduct);
-        void ChangeActiveStateToFalse(int id);
-        void ChangeActiveStateToTrue(int id);
+        void ChangeActiveState(int id);
         IEnumerable<Product> GetAllProductsWithIds(List<int> ids);
     }
 }

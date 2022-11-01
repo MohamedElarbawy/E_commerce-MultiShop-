@@ -19,11 +19,6 @@ namespace BusinessLogicLayer.Repositories
             this.context = context;
         }
 
-        public IEnumerable<Category> GetAllCategoreis()
-        {
-        return context.Categories.ToList();
-        }
-
-        
+              
     }
 }

@@ -1,4 +1,7 @@
-﻿
+﻿@model MVC_Layer.Models.UserDataViewModel
+
+
+                        <form asp-action="index" asp-controller="CheckOut" method="post">
 <div class="container-fluid">
         <div class="row px-xl-5">
             <div class="col-lg-8">
@@ -7,31 +10,31 @@
                     <div class="row">
                         <div class="col-md-6 form-group">
                             <label>First Name</label>
-                            <input class="form-control" type="text" placeholder="John">
+                            <input class="form-control" type="text" placeholder="enter your first name" asp-for="FirstName">
                         </div>
                         <div class="col-md-6 form-group">
                             <label>Last Name</label>
-                            <input class="form-control" type="text" placeholder="Doe">
+                            <input class="form-control" type="text" placeholder="enter your last name" asp-for="LastName">
                         </div>
                         <div class="col-md-6 form-group">
                             <label>E-mail</label>
-                            <input class="form-control" type="text" placeholder="example@email.com">
+                            <input class="form-control" type="text" placeholder="example@email.com" asp-for="Email">
                         </div>
                         <div class="col-md-6 form-group">
                             <label>Mobile No</label>
-                            <input class="form-control" type="text" placeholder="+123 456 789">
+                            <input class="form-control" type="text" placeholder="+123 456 789" asp-for="MobileNumber">
                         </div>
                         <div class="col-md-6 form-group">
                             <label>Address Line 1</label>
-                            <input class="form-control" type="text" placeholder="123 Street">
+                            <input class="form-control" type="text" placeholder="123 Street" asp-for="Address1">
                         </div>
                         <div class="col-md-6 form-group">
                             <label>Address Line 2</label>
-                            <input class="form-control" type="text" placeholder="123 Street">
+                            <input class="form-control" type="text" placeholder="123 Street" asp-for="Address2">
                         </div>
                         <div class="col-md-6 form-group">
                             <label>Country</label>
-                            <select class="custom-select">
+                            <select class="custom-select" asp-for="Countery">
                                 <option selected="">United States</option>
                                 <option>Afghanistan</option>
                                 <option>Albania</option>
@@ -40,28 +43,15 @@
                         </div>
                         <div class="col-md-6 form-group">
                             <label>City</label>
-                            <input class="form-control" type="text" placeholder="New York">
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>State</label>
-                            <input class="form-control" type="text" placeholder="New York">
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <label>ZIP Code</label>
-                            <input class="form-control" type="text" placeholder="123">
-                        </div>
-                        <div class="col-md-12 form-group">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="newaccount">
-                                <label class="custom-control-label" for="newaccount">Create an account</label>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="shipto">
-                                <label class="custom-control-label" for="shipto" data-toggle="collapse" data-target="#shipping-address">Ship to different address</label>
-                            </div>
-                        </div>
+                            <input class="form-control" type="text" placeholder="New York" asp-for="City">
+                        </div> 
+                        
+                     
+                            <input id="addcartitem" type="text"  style="visibility: hidden;" asp-for="itemsInJson">
+
+                  
+                   
+                       
                     </div>
                 </div>
                 <div class="collapse mb-5" id="shipping-address">
@@ -105,14 +95,7 @@
                                 <label>City</label>
                                 <input class="form-control" type="text" placeholder="New York">
                             </div>
-                            <div class="col-md-6 form-group">
-                                <label>State</label>
-                                <input class="form-control" type="text" placeholder="New York">
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label>ZIP Code</label>
-                                <input class="form-control" type="text" placeholder="123">
-                            </div>
+                     
                         </div>
                     </div>
                 </div>
@@ -173,9 +156,15 @@
                                 <label class="custom-control-label" for="banktransfer">Bank Transfer</label>
                             </div>
                         </div>
-                        <button class="btn btn-block btn-primary font-weight-bold py-3">Place Order</button>
+                        <button type="submit" class="btn btn-block btn-primary font-weight-bold py-3" >Place Order</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    </form>
+  @section Scripts {
+    <script>
+         sendItems();
+    </script>
+  }

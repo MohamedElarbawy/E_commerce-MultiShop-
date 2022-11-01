@@ -19,13 +19,17 @@ namespace BusinessLogicLayer
 
         public ICategoryRepo Categories {get; private set; }
         public IColorRepo Colors {get; private set; }
+        public IGenericRepository<Discount> Discounts { get; private set; }
+        public IGenericRepository<CartItem> CartItems { get; private set; }
 
         public UnitOfWork(MultiShopContext context)
         {
-            this._context = context;
+           _context = context;
             Products = new ProductsRepo(_context);
             Categories = new CategoryRepo(_context);
             Colors =new ColorRepo(_context);
+            Discounts = new GenericRepository<Discount>(_context);
+            CartItems = new GenericRepository<CartItem>(_context);
            
         }
 

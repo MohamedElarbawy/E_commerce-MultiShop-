@@ -11,11 +11,13 @@ namespace CoreLayer
     public interface IUnitOfWork : IDisposable
     {
 
-       
+
         IProductsRepo Products { get; }
         ICategoryRepo Categories { get; }
-
         IColorRepo Colors { get; }
+        IGenericRepository<Discount> Discounts {get;}
+        public IGenericRepository<CartItem> CartItems { get; }
+
         int Complete();
        
     }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "CGHhr/ZyUCtnRzZwPNIZ8051EYDiLssxbCXmg5f5SfrTHi8v3v8SRr8K6+HNQEwuiX9bR8h4I1DyVA+wJM55Mg==",
+  "dgSpecHash": "vDVbVSB8Zqa/aI0Tr6VS1ffR3823yvu9S/j439l667KvvXeIToCFk6NZQB9ZPOvvyX1aoj8rHiXIxYsg9E6S5w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\TOSHIBA\\Downloads\\Documents\\My1stE_CommerceSite\\CoreLayer\\CoreLayer.csproj",
+  "projectFilePath": "E:\\myfirstproject\\My1stE_CommerceSite\\CoreLayer\\CoreLayer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\TOSHIBA\\.nuget\\packages\\microsoft.aspnetcore.http.features\\5.0.17\\microsoft.aspnetcore.http.features.5.0.17.nupkg.sha512",
     "C:\\Users\\TOSHIBA\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.9\\microsoft.entityframeworkcore.6.0.9.nupkg.sha512",
